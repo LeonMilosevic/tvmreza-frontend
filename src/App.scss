@@ -1,0 +1,13 @@
+@import "./scss/variables.scss";
+@import "./scss/adminNavbar.scss";
+@import "./scss/global.scss";
+@import "./scss/dashboard.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: $white;
+}

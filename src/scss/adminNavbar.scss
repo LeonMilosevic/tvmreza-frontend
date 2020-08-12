@@ -1,0 +1,84 @@
+.navbar-custom-admin {
+  width: 100%;
+  height: 70px;
+  background-color: $darkGray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-admin-header {
+  font-size: 32px;
+  font-weight: 700;
+  padding-left: 2%;
+}
+
+.navbar-admin-header-link {
+  text-decoration: none;
+  color: $white;
+}
+
+.navbar-admin-link {
+  padding-right: 5%;
+}
+
+.admin-navbar-link {
+  font-size: 20px;
+  font-weight: 700;
+  color: $darkBlue;
+}
+
+// management navbar
+.navbar-custom-admin-management {
+  width: 100%;
+  height: 50px;
+  background-color: $brightBlue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-admin-header-management {
+  font-size: 20px;
+  font-weight: 700;
+  color: $white;
+  padding-right: 5%;
+}
+
+.navbar-admin-management-links {
+  display: flex;
+  width: 60%;
+  justify-content: space-around;
+}
+
+.navbar-admin-management-link {
+  font-size: 18px;
+  font-weight: 700;
+  color: $white;
+  text-decoration: none;
+}
+
+.navbar-admin-management-link-active {
+  text-decoration: underline;
+  $color: $darkGray;
+}
+// crud tab
+.crud-tab {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+}
+
+.crud-tab-link {
+  font-size: 18px;
+  font-weight: 700;
+  color: $darkGray;
+  text-decoration: none;
+  margin: 20px;
+}
+
+.crud-tab-link-active {
+  text-decoration: underline;
+  $color: $darkBlue;
+}
