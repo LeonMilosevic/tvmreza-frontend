@@ -15,6 +15,13 @@ import AdminLica from "../admin/pages/tvlica/AdminLica";
 import AdminVideo from "../admin/pages/video/AdminVideo";
 import CreateArticles from "../admin/pages/article/crudpages/CreateArticles";
 import ReadallArticles from "../admin/pages/article/crudpages/ReadallArticles";
+import UpdateArticles from "../admin/pages/article/crudpages/UpdateArticles";
+import CreateBanner from "../admin/pages/banner/crudpages/CreateBanner";
+import ReadBanner from "../admin/pages/banner/crudpages/ReadBanner";
+import CreateCategory from "../admin/pages/category/crudpages/CreateCategory";
+import ReadCategory from "../admin/pages/category/crudpages/ReadCategory";
+import CreateFooter from "../admin/pages/footer/crudfooter/CreateFooter";
+import ReadFooter from "../admin/pages/footer/crudfooter/ReadFooter";
 
 /**
  * Component: Routes
@@ -36,9 +43,44 @@ const Routes = () => {
         path="/admin/articles/readall"
         component={ReadallArticles}
       />
+      <PrivateRoute
+        exact
+        path="/admin/article/update/:id"
+        component={UpdateArticles}
+      />
       <PrivateRoute exact path="/admin/banners" component={AdminBanner} />
+      <PrivateRoute
+        exact
+        path="/admin/banners/create"
+        component={CreateBanner}
+      />
+      <PrivateRoute
+        exact
+        path="/admin/banners/readall"
+        component={ReadBanner}
+      />
       <PrivateRoute exact path="/admin/categories" component={AdminCategory} />
+      <PrivateRoute
+        exact
+        path="/admin/categories/create"
+        component={CreateCategory}
+      />
+      <PrivateRoute
+        exact
+        path="/admin/categories/readall"
+        component={ReadCategory}
+      />
       <PrivateRoute exact path="/admin/footers" component={AdminFooter} />
+      <PrivateRoute
+        exact
+        path="/admin/footers/create"
+        component={CreateFooter}
+      />
+      <PrivateRoute
+        exact
+        path="/admin/footers/readall"
+        component={ReadFooter}
+      />
       <PrivateRoute exact path="/admin/pages" component={AdminPage} />
       <PrivateRoute exact path="/admin/posts" component={AdminPost} />
       <PrivateRoute exact path="/admin/sporazum" component={AdminSporazum} />

@@ -2,17 +2,22 @@ import React, { useState, useEffect } from "react";
 // import helpers
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { NavLink } from "react-router-dom";
 import M from "materialize-css";
+import { categoryReadAllByOrder, articleCreate } from "../../../api/adminApi";
 // import comopnents
 import AdminNavbar from "../../../dashboard/AdminNavbar";
 import AdminManagementNavbar from "../../../dashboard/AdminManagementNavbar";
-import { categoryReadAllByOrder, articleCreate } from "../../../api/adminApi";
-// TODO: organise code, select not working properly
+import CrudTab from "../../../dashboard/CrudTab";
+// TODO: organise code
 const CreateArticles = () => {
+  /* 
+  States for articles to populate them. 
+  We separeted dateDisplay from article since there is a problem with date overwriting fields on change.
+  We have an empty category state and we use useEffect to make a call to a protected admin route and populate it.
+  */
   const [newArticle, setNewArticle] = useState({
     categoryId: null,
-    keywords: [],
+    keywords: "",
     videoUrl: "",
     imageUrl: "",
     content: "",
@@ -22,55 +27,87 @@ const CreateArticles = () => {
   const [dateDisplay, setDateDisplay] = useState(null);
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  // populating category state from an api call. We use two .then() since one then() returns a promise, and then we need to extract the promise.
 
   useEffect(() => {
     categoryReadAllByOrder()
       .then((response) => {
         return response.json();
       })
-      .then((responseJson) => setCategories(responseJson))
-      .catch((error) => setError(error));
+      .then((responseJson) => {
+        setCategories(responseJson);
+      })
+      .catch((error) =>
+        setError(
+          "there was a problem fetching categories, please try to refresh the page"
+        )
+      );
   }, []);
 
   useEffect(() => {
     M.AutoInit();
+  }, [categories]);
+
+  useEffect(() => {
     M.Datepicker.init(document.querySelector(".datepicker"), {
       onClose: () => handleDate(),
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categories]);
+  }, []);
 
+  // we are parsing the date in epoh time that we get from materialize datepicker
   const handleDate = () => {
+    setError("");
+    setSuccess("");
     setDateDisplay(Date.parse(document.querySelector(".datepicker").value));
   };
+
   const handleChangeArticle = (name) => (e) => {
+    setError("");
+    setSuccess("");
     setNewArticle({ ...newArticle, [name]: e.target.value });
   };
 
   const handleChangeEditor = (e, editor) => {
+    setError("");
+    setSuccess("");
     const editorData = editor.getData();
     setNewArticle({ ...newArticle, content: editorData });
   };
 
-  const clickSubmitCreateArticle = (e) => {
-    articleCreate(newArticle, dateDisplay).then((response) =>
-      console.log(response)
-    );
+  const clickSubmitCreateArticle = () => {
+    setError("");
+    setSuccess("");
+    if (
+      newArticle.categoryId === null ||
+      newArticle.keywords === "" ||
+      newArticle.content === "" ||
+      newArticle.header === "" ||
+      newArticle.author === ""
+    ) {
+      return setError("Mandatory fields are missing");
+    }
+    articleCreate(newArticle, dateDisplay)
+      .then((response) => {
+        if (response.ok === false) {
+          setError("Please fill in all the fields");
+        } else {
+          setSuccess("Article created");
+        }
+      })
+      .catch(() => setError("Please fill in all the fields"));
   };
-
+  // article form for fields
   const createArticleForm = () => (
     <>
       <div className="input-field col s12">
         <select onChange={handleChangeArticle("categoryId")}>
-          <option value="" disabled>
-            Choose a category
-          </option>
-          {categories &&
-            categories.map((category, i) => (
-              <option value={category.id} key={i}>
-                {category.categoryName}
-              </option>
-            ))}
+          <option value="">Choose a category</option>
+          {categories.map((category, i) => (
+            <option value={category.id} key={i}>
+              {category.categoryName}
+            </option>
+          ))}
         </select>
         <label>Select category</label>
       </div>
@@ -122,6 +159,8 @@ const CreateArticles = () => {
         <h1>Write article</h1>
         <CKEditor onChange={handleChangeEditor} editor={ClassicEditor} />
       </div>
+      {success && <div className="col s12 success-msg">{success}</div>}
+      {error && <div className="col s12 error-msg">{error}</div>}
       <div className="col s12 submit-btn">
         <button
           onClick={clickSubmitCreateArticle}
@@ -137,22 +176,10 @@ const CreateArticles = () => {
     <>
       <AdminNavbar />
       <AdminManagementNavbar />
-      <div className="crud-tab">
-        <NavLink
-          activeClassName="crud-tab-link-active"
-          className="crud-tab-link"
-          to="/admin/articles/create"
-        >
-          Create new
-        </NavLink>
-        <NavLink
-          activeClassName="crud-tab-link-active"
-          className="crud-tab-link"
-          to="/admin/articles/readall"
-        >
-          Read all
-        </NavLink>
-      </div>
+      <CrudTab
+        createTo={"/admin/articles/create"}
+        readTo={"/admin/articles/readall"}
+      />
       <div className="container">{createArticleForm()}</div>
     </>
   );
