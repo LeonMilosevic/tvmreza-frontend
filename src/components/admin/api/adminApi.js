@@ -174,3 +174,64 @@ export const footerbannerRemoveById = (id) => {
     },
   });
 };
+
+/* Navpage CRUD */
+
+export const navpageCreate = (page) => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/navbarpage/create`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      navbarName: page.navbarName,
+      navbarOrder: page.navbarOrder,
+      videoUrl: page.videoUrl,
+      imageUrl: page.imageUrl,
+      content: page.content,
+      header: page.header,
+    }),
+  });
+};
+
+export const navbarPageReadAllByOrder = () => {
+  return fetch(
+    `${process.env.REACT_APP_API_ADMIN}/navbarpage/read/all/ordered`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+      },
+    }
+  );
+};
+
+export const navbarPageRemoveById = (id) => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/navbarpage/remove/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+    },
+  });
+};
+
+/* POSTS CRUD */
+
+export const postsReadAllByOrder = () => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/post/read/all/ordered`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+    },
+  });
+};
+
+export const postRemoveById = (id) => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/post/remove/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+    },
+  });
+};

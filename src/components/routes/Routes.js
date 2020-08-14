@@ -22,6 +22,9 @@ import CreateCategory from "../admin/pages/category/crudpages/CreateCategory";
 import ReadCategory from "../admin/pages/category/crudpages/ReadCategory";
 import CreateFooter from "../admin/pages/footer/crudfooter/CreateFooter";
 import ReadFooter from "../admin/pages/footer/crudfooter/ReadFooter";
+import CreatePage from "../admin/pages/page/crudpages/CreatePage";
+import ReadPages from "../admin/pages/page/crudpages/ReadPages";
+import ReadPosts from "../admin/pages/post/crudpages/ReadPosts";
 
 /**
  * Component: Routes
@@ -82,7 +85,10 @@ const Routes = () => {
         component={ReadFooter}
       />
       <PrivateRoute exact path="/admin/pages" component={AdminPage} />
+      <PrivateRoute exact path="/admin/pages/create" component={CreatePage} />
+      <PrivateRoute exact path="/admin/pages/readall" component={ReadPages} />
       <PrivateRoute exact path="/admin/posts" component={AdminPost} />
+      <PrivateRoute exact path="/admin/posts/readall" component={ReadPosts} />
       <PrivateRoute exact path="/admin/sporazum" component={AdminSporazum} />
       <PrivateRoute exact path="/admin/tvfaces" component={AdminLica} />
       <PrivateRoute exact path="/admin/videos" component={AdminVideo} />
