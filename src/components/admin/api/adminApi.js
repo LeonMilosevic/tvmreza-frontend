@@ -235,3 +235,77 @@ export const postRemoveById = (id) => {
     },
   });
 };
+
+/* SPORAZUM CRUD */
+
+export const sporazumCreate = (sporazum, dateDisplay) => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/sporazum/create`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      videoUrl: sporazum.videoUrl,
+      content: sporazum.content,
+      header: sporazum.header,
+      location: sporazum.location,
+      dateDisplay: dateDisplay,
+    }),
+  });
+};
+
+export const sporazumReadAllByDate = () => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/sporazum/read/all/ordered`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+    },
+  });
+};
+
+export const sporazumRemoveById = (id) => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/sporazum/remove/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+    },
+  });
+};
+
+/* VIDEO CRUD */
+
+export const videosectionCreate = (video, dateDisplay) => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/video/create`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      videoUrl: video.videoUrl,
+      content: video.content,
+      header: video.header,
+      location: video.location,
+      dateDisplay: dateDisplay,
+    }),
+  });
+};
+
+export const videosectionReadAllByDate = () => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/video/read/all/ordered`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+    },
+  });
+};
+
+export const videosectionRemoveById = (id) => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/video/remove/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+    },
+  });
+};

@@ -25,6 +25,10 @@ import ReadFooter from "../admin/pages/footer/crudfooter/ReadFooter";
 import CreatePage from "../admin/pages/page/crudpages/CreatePage";
 import ReadPages from "../admin/pages/page/crudpages/ReadPages";
 import ReadPosts from "../admin/pages/post/crudpages/ReadPosts";
+import CreateSporazum from "../admin/pages/sporazum/crudpages/CreateSporazum";
+import ReadSporazum from "../admin/pages/sporazum/crudpages/ReadSporazum";
+import CreateVideo from "../admin/pages/video/crudpages/CreateVideo";
+import ReadVideo from "../admin/pages/video/crudpages/ReadVideo";
 
 /**
  * Component: Routes
@@ -90,8 +94,20 @@ const Routes = () => {
       <PrivateRoute exact path="/admin/posts" component={AdminPost} />
       <PrivateRoute exact path="/admin/posts/readall" component={ReadPosts} />
       <PrivateRoute exact path="/admin/sporazum" component={AdminSporazum} />
+      <PrivateRoute
+        exact
+        path="/admin/sporazum/create"
+        component={CreateSporazum}
+      />
+      <PrivateRoute
+        exact
+        path="/admin/sporazum/readall"
+        component={ReadSporazum}
+      />
       <PrivateRoute exact path="/admin/tvfaces" component={AdminLica} />
       <PrivateRoute exact path="/admin/videos" component={AdminVideo} />
+      <PrivateRoute exact path="/admin/videos/create" component={CreateVideo} />
+      <PrivateRoute exact path="/admin/videos/readall" component={ReadVideo} />
       <Route exact path="/public/admin/login" component={AdminLogin} />
     </Switch>
   );
