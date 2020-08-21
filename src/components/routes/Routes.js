@@ -29,6 +29,8 @@ import CreateSporazum from "../admin/pages/sporazum/crudpages/CreateSporazum";
 import ReadSporazum from "../admin/pages/sporazum/crudpages/ReadSporazum";
 import CreateVideo from "../admin/pages/video/crudpages/CreateVideo";
 import ReadVideo from "../admin/pages/video/crudpages/ReadVideo";
+import CreateLica from "../admin/pages/tvlica/crudpages/CreateLica";
+import ReadLica from "../admin/pages/tvlica/crudpages/ReadLica";
 
 /**
  * Component: Routes
@@ -105,6 +107,8 @@ const Routes = () => {
         component={ReadSporazum}
       />
       <PrivateRoute exact path="/admin/tvfaces" component={AdminLica} />
+      <PrivateRoute exact path="/admin/tvfaces/create" component={CreateLica} />
+      <PrivateRoute exact path="/admin/tvfaces/readall" component={ReadLica} />
       <PrivateRoute exact path="/admin/videos" component={AdminVideo} />
       <PrivateRoute exact path="/admin/videos/create" component={CreateVideo} />
       <PrivateRoute exact path="/admin/videos/readall" component={ReadVideo} />

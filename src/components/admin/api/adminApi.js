@@ -309,3 +309,43 @@ export const videosectionRemoveById = (id) => {
     },
   });
 };
+
+/* TV FACES CRUD */
+export const tvfaceCreate = (lica) => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/tvface/create`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      firstName: lica.firstName,
+      lastName: lica.lastName,
+      imageUrl: lica.imageUrl,
+      workPosition: lica.workPosition,
+      career: lica.career,
+      education: lica.education,
+      tvprogram: lica.tvprogram,
+      professionalChallenges: lica.professionalChallenges,
+      contact: lica.contact,
+    }),
+  });
+};
+
+export const tvlicaReadAll = () => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/tvface/read/all`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+    },
+  });
+};
+
+export const tvlicaRemoveById = (id) => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/tvface/remove/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+    },
+  });
+};
