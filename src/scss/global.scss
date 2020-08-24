@@ -1,0 +1,41 @@
+/* override materialize inputs */
+
+.input-field {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.input-field input[type="text"] + label,
+.materialize-textarea:focus:not([readonly]) + label {
+  color: $linksInputs !important;
+}
+
+.input-field input[type="text"],
+.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid $linksInputs !important;
+  box-shadow: 0 1px 0 0 $linksInputs !important;
+}
+
+.input-field input[type="text"]:focus + label,
+.materialize-textarea:focus:not([readonly]) + label {
+  color: $white !important;
+}
+
+.input-field input[type="text"]:focus,
+.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid $white !important;
+  box-shadow: 0 1px 0 0 $white !important;
+}
+
+.input-field [type="text"] {
+  color: $linksInputs !important;
+}
+
+/* override materialize icons */
+
+.material-icons {
+  color: $white !important;
+}
+
+.material-icons.active {
+  color: $linksInputs !important;
+}

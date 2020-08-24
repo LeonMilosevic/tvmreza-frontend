@@ -44,8 +44,8 @@ export const isLoggedIn = () => {
     const decoded = jwt.decode(token, { complete: true });
     const dateNow = Math.round(new Date().getTime() / 1000);
     if (
-      decoded.payload.sub !== null ||
-      decoded.payload.sub !== "" ||
+      decoded.payload.sub !== null &&
+      decoded.payload.sub !== "" &&
       decoded.payload.exp > dateNow
     ) {
       return true;

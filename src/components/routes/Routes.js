@@ -31,6 +31,7 @@ import CreateVideo from "../admin/pages/video/crudpages/CreateVideo";
 import ReadVideo from "../admin/pages/video/crudpages/ReadVideo";
 import CreateLica from "../admin/pages/tvlica/crudpages/CreateLica";
 import ReadLica from "../admin/pages/tvlica/crudpages/ReadLica";
+import Home from "../public/home/Home";
 
 /**
  * Component: Routes
@@ -112,6 +113,8 @@ const Routes = () => {
       <PrivateRoute exact path="/admin/videos" component={AdminVideo} />
       <PrivateRoute exact path="/admin/videos/create" component={CreateVideo} />
       <PrivateRoute exact path="/admin/videos/readall" component={ReadVideo} />
+      {/* public routes */}
+      <Route exact path="/" component={Home} />
       <Route exact path="/public/admin/login" component={AdminLogin} />
     </Switch>
   );
