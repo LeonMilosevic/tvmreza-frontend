@@ -26,8 +26,9 @@ const CreateVideo = () => {
 
   useEffect(() => {
     M.Datepicker.init(document.querySelector(".datepicker"), {
-      onClose: () => handleDate(),
+      onClose: handleDate,
     });
+    console.log("here");
   }, []);
   // we are parsing the date in epoh time that we get from materialize datepicker
   const handleDate = () => {

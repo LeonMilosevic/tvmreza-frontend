@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const NavBottom = () => {
+const NavBottom = (props) => {
   return (
     <div className="nav-bottom-custom">
       <div className="container nav-buttom-wrapper">
@@ -9,18 +9,15 @@ const NavBottom = () => {
           <NavLink className="nav-bottom-link-first" to="/">
             Pocetna
           </NavLink>
-          <NavLink className="nav-bottom-link" to="/">
-            Kategorije
-          </NavLink>
-          <NavLink className="nav-bottom-link" to="/">
-            Link 3
-          </NavLink>
-          <NavLink className="nav-bottom-link" to="/">
-            Link 4
-          </NavLink>
-          <NavLink className="nav-bottom-link" to="/">
-            Link 5
-          </NavLink>
+          {props.categories.map((category, i) => (
+            <NavLink
+              key={i}
+              to={`/${category.categoryName}/${category.id}`}
+              className="nav-bottom-link"
+            >
+              {category.categoryName}
+            </NavLink>
+          ))}
         </div>
       </div>
     </div>

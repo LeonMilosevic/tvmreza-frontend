@@ -25,3 +25,13 @@ export const categoriesReadAllByDate = () => {
     }
   );
 };
+
+// sidebanners get
+export const sidebannersReadAllOrdered = () => {
+  return fetch(
+    `${process.env.REACT_APP_API_PUBLIC}/sidebanner/read/all/ordered`,
+    {
+      method: "GET",
+    }
+  );
+};
