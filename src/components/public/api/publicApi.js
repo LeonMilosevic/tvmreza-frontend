@@ -35,3 +35,22 @@ export const sidebannersReadAllOrdered = () => {
     }
   );
 };
+
+// articles read
+export const articlesReadOrderedOnly8 = () => {
+  return fetch(
+    `${process.env.REACT_APP_API_PUBLIC}/article/read/all/ordered/8`,
+    {
+      method: "GET",
+    }
+  );
+};
+
+export const articlesReadOrderedByMostViewedOnly8 = () => {
+  return fetch(
+    `${process.env.REACT_APP_API_PUBLIC}/article/read/all/mostviewed/8`,
+    {
+      method: "GET",
+    }
+  );
+};

@@ -47,13 +47,10 @@ const CreateArticles = () => {
 
   useEffect(() => {
     M.AutoInit();
-  }, [categories]);
-
-  useEffect(() => {
     M.Datepicker.init(document.querySelector(".datepicker"), {
       onClose: () => handleDate(),
     });
-  }, []);
+  }, [categories]);
 
   // we are parsing the date in epoh time that we get from materialize datepicker
   const handleDate = () => {
@@ -100,7 +97,7 @@ const CreateArticles = () => {
   // article form for fields
   const createArticleForm = () => (
     <>
-      <div className="input-field col s12">
+      <div className="input-field col s12 custom-margin">
         <select onChange={handleChangeArticle("categoryId")}>
           <option value="">Choose a category</option>
           {categories.map((category, i) => (
@@ -111,7 +108,7 @@ const CreateArticles = () => {
         </select>
         <label>Select category</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 custom-margin">
         <input
           onChange={handleChangeArticle("keywords")}
           type="text"
@@ -119,7 +116,7 @@ const CreateArticles = () => {
         />
         <label htmlFor="keywords">Type keywords</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 custom-margin">
         <input
           onChange={handleChangeArticle("videoUrl")}
           type="text"
@@ -127,7 +124,7 @@ const CreateArticles = () => {
         />
         <label htmlFor="videourl">Video link</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 custom-margin">
         <input
           onChange={handleChangeArticle("imageUrl")}
           type="text"
@@ -135,7 +132,7 @@ const CreateArticles = () => {
         />
         <label htmlFor="imageurl">Image link</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 custom-margin">
         <input
           onChange={handleChangeArticle("header")}
           type="text"
@@ -143,11 +140,11 @@ const CreateArticles = () => {
         />
         <label htmlFor="header">Naslov</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 custom-margin">
         <input
           onChange={handleChangeArticle("author")}
           type="text"
-          className="validate"
+          className="validate custom-margin"
         />
         <label htmlFor="author">Autor</label>
       </div>
@@ -155,7 +152,7 @@ const CreateArticles = () => {
         <input onClose={handleDate} type="text" className="datepicker" />
         <label htmlFor="date">Pick a date</label>
       </div>
-      <div className="col s12">
+      <div className="col s12 custom-margin">
         <h1>Write article</h1>
         <CKEditor onChange={handleChangeEditor} editor={ClassicEditor} />
       </div>

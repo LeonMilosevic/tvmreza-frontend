@@ -12,6 +12,7 @@ export const PublicContext = React.createContext();
 export const PublicProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [articles, setArticles] = useState([]);
+  const [popularArticles, setPopularArticles] = useState([]);
   const [sideBanners, setSideBanners] = useState([]);
   const [footerBanners, setFooterBanners] = useState([]);
   const [navPages, setNavPages] = useState([]);
@@ -27,6 +28,8 @@ export const PublicProvider = ({ children }) => {
         setCategories,
         articles,
         setArticles,
+        popularArticles,
+        setPopularArticles,
         sideBanners,
         setSideBanners,
         footerBanners,

@@ -11,8 +11,12 @@ import {
   videosectionReadAllByDateOnly6,
   categoriesReadAllByDate,
   sidebannersReadAllOrdered,
+  articlesReadOrderedOnly8,
+  articlesReadOrderedByMostViewedOnly8,
 } from "../api/publicApi";
 import Sidebanners from "./Sidebanners";
+import Articles from "./articles/Articles";
+import ArticlesMostPopular from "./articles/ArticlesMostPopular";
 
 const Home = () => {
   const {
@@ -22,6 +26,8 @@ const Home = () => {
     setCategories,
     articles,
     setArticles,
+    popularArticles,
+    setPopularArticles,
     sideBanners,
     setSideBanners,
     loading,
@@ -33,16 +39,29 @@ const Home = () => {
         videosectionReadAllByDateOnly6().then((response) => response.json()),
         categoriesReadAllByDate().then((response) => response.json()),
         sidebannersReadAllOrdered().then((response) => response.json()),
+        articlesReadOrderedOnly8().then((response) => response.json()),
+        articlesReadOrderedByMostViewedOnly8().then((response) =>
+          response.json()
+        ),
       ]).then((responseJson) => {
         setVideo(responseJson[0]);
         setCategories(responseJson[1]);
         setSideBanners(responseJson[2]);
+        setArticles(responseJson[3]);
+        setPopularArticles(responseJson[4]);
         setLoading(false);
       });
     } catch (error) {
       console.log(error);
     }
-  }, [setVideo, setCategories, setLoading, setSideBanners]);
+  }, [
+    setVideo,
+    setCategories,
+    setLoading,
+    setSideBanners,
+    setArticles,
+    setPopularArticles,
+  ]);
   return (
     <>
       {loading ? (
@@ -53,9 +72,11 @@ const Home = () => {
           <NavMiddle />
           <NavBottom categories={categories} />
           <div className="container">
-            <div className="row">
+            <div className="home-grid">
               <Videos videos={video} />
               <Sidebanners sidebanners={sideBanners} />
+              <Articles articles={articles} />
+              <ArticlesMostPopular articles={popularArticles} />
             </div>
           </div>
         </>

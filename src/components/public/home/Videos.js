@@ -29,7 +29,7 @@ const Videos = (props) => {
 
   const displayVideos = () => (
     <>
-      <div className="col s12 m10">
+      <div className="grid-item-video">
         <div className="video-display-header">Najnoviji video</div>
         <div className="video-grid">
           <div className="video-display-main">
