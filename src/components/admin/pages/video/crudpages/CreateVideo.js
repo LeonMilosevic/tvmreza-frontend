@@ -76,7 +76,7 @@ const CreateVideo = () => {
   // sporazum form for fields
   const createVideoForm = () => (
     <>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeVideo("videoUrl")}
           type="text"
@@ -84,7 +84,7 @@ const CreateVideo = () => {
         />
         <label htmlFor="videourl">Video link</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeVideo("header")}
           type="text"
@@ -92,7 +92,7 @@ const CreateVideo = () => {
         />
         <label htmlFor="header">Naslov</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeVideo("location")}
           type="text"

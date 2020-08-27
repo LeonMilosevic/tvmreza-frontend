@@ -54,3 +54,11 @@ export const articlesReadOrderedByMostViewedOnly8 = () => {
     }
   );
 };
+
+// Survey read and update
+
+export const surveyReadByTrue = () => {
+  return fetch(`${process.env.REACT_APP_API_PUBLIC}/survey/read`, {
+    method: "GET",
+  });
+};

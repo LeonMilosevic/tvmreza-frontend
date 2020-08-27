@@ -1,7 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { PublicContext } from "../../context/public/PublicContext";
 
-const NavBottom = (props) => {
+const NavBottom = () => {
+  const { categories } = React.useContext(PublicContext);
+
   return (
     <div className="nav-bottom-custom">
       <div className="container nav-buttom-wrapper">
@@ -9,7 +12,7 @@ const NavBottom = (props) => {
           <NavLink className="nav-bottom-link-first" to="/">
             Pocetna
           </NavLink>
-          {props.categories.map((category, i) => (
+          {categories.map((category, i) => (
             <NavLink
               key={i}
               to={`/${category.categoryName}/${category.id}`}

@@ -89,6 +89,15 @@ const AdminManagementNavbar = () => {
             Tv Lica
           </NavLink>
         </div>
+        <div>
+          <NavLink
+            activeClassName="navbar-admin-management-link-active"
+            className="navbar-admin-management-link"
+            to="/admin/survey"
+          >
+            Anketa
+          </NavLink>
+        </div>
       </div>
       <div className="navbar-admin-header-management">
         Welcome, {user && user.firstName}

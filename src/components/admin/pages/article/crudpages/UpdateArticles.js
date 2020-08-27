@@ -107,7 +107,7 @@ const UpdateArticles = () => {
     <>
       {article && (
         <>
-          <div className="input-field col s12">
+          <div className="input-field col s12 input-fileds-custom">
             <select onChange={handleChangeArticle("categoryId")}>
               <option className="attention" value="">
                 No category selected
@@ -120,7 +120,7 @@ const UpdateArticles = () => {
             </select>
             <label>Choose a category</label>
           </div>
-          <div className="input-field col s12">
+          <div className="input-field col s12 input-fileds-custom">
             <input
               onChange={handleChangeArticle("keywords")}
               type="text"
@@ -128,7 +128,7 @@ const UpdateArticles = () => {
             />
             <label htmlFor="keywords">Keywords: {article.keywords}</label>
           </div>
-          <div className="input-field col s12">
+          <div className="input-field col s12 input-fileds-custom">
             <input
               onChange={handleChangeArticle("videoUrl")}
               type="text"
@@ -139,7 +139,7 @@ const UpdateArticles = () => {
               {article.videoUrl === "" ? "Add a video link" : article.videoUrl}
             </label>
           </div>
-          <div className="input-field col s12">
+          <div className="input-field col s12 input-fileds-custom">
             <input
               onChange={handleChangeArticle("imageUrl")}
               type="text"
@@ -150,7 +150,7 @@ const UpdateArticles = () => {
               {article.imageUrl === "" ? "Add an image link" : article.imageUrl}
             </label>
           </div>
-          <div className="input-field col s12">
+          <div className="input-field col s12 input-fileds-custom">
             <input
               onChange={handleChangeArticle("header")}
               type="text"
@@ -158,7 +158,7 @@ const UpdateArticles = () => {
             />
             <label htmlFor="header">Naslov: {article.header}</label>
           </div>
-          <div className="input-field col s12">
+          <div className="input-field col s12 input-fileds-custom">
             <input
               onChange={handleChangeArticle("author")}
               type="text"

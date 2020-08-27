@@ -52,7 +52,7 @@ const CreateLica = () => {
   // tv lica form
   const createLicaForm = () => (
     <>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeLica("firstName")}
           type="text"
@@ -60,7 +60,7 @@ const CreateLica = () => {
         />
         <label htmlFor="firstname">Ime</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeLica("lastName")}
           type="text"
@@ -68,7 +68,7 @@ const CreateLica = () => {
         />
         <label htmlFor="lastname">Prezime</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeLica("imageUrl")}
           type="text"
@@ -76,7 +76,7 @@ const CreateLica = () => {
         />
         <label htmlFor="lastname">Image link</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeLica("workPosition")}
           type="text"
@@ -84,7 +84,7 @@ const CreateLica = () => {
         />
         <label htmlFor="workPosition">Radna pozicija</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeLica("career")}
           type="text"
@@ -92,7 +92,7 @@ const CreateLica = () => {
         />
         <label htmlFor="karijera">Karijera</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeLica("education")}
           type="text"
@@ -100,7 +100,7 @@ const CreateLica = () => {
         />
         <label htmlFor="education">Edukacija</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeLica("tvprogram")}
           type="text"
@@ -108,7 +108,7 @@ const CreateLica = () => {
         />
         <label htmlFor="tvprogram">Program</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeLica("professionalChallenges")}
           type="text"
@@ -116,7 +116,7 @@ const CreateLica = () => {
         />
         <label htmlFor="professionalChallenges">Profesionalni Izazovi</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeLica("contact")}
           type="text"

@@ -42,7 +42,7 @@ const CreateCategory = () => {
 
   const createCategoryForm = () => (
     <>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeCategory("categoryName")}
           type="text"
@@ -50,7 +50,7 @@ const CreateCategory = () => {
         />
         <label htmlFor="keywords">Category name</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <select onChange={handleChangeCategory("categoryOrder")}>
           <option value="" disabled>
             Choose your option

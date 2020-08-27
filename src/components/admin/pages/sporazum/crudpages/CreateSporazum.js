@@ -75,7 +75,7 @@ const CreateSporazum = () => {
   // sporazum form for fields
   const createSporazumForm = () => (
     <>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeSporazum("videoUrl")}
           type="text"
@@ -83,7 +83,7 @@ const CreateSporazum = () => {
         />
         <label htmlFor="videourl">Video link</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeSporazum("header")}
           type="text"
@@ -91,7 +91,7 @@ const CreateSporazum = () => {
         />
         <label htmlFor="header">Naslov</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeSporazum("location")}
           type="text"

@@ -349,3 +349,64 @@ export const tvlicaRemoveById = (id) => {
     },
   });
 };
+
+/* Survey CRUD */
+
+export const surveyCreate = (survey) => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/survey/create`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      display: survey.display,
+      question: survey.question,
+      answerOne: survey.answerOne,
+      answerTwo: survey.answerTwo,
+      answerThree: survey.answerThree,
+      answerFour: survey.answerFour,
+      answerFive: survey.answerFive,
+    }),
+  });
+};
+
+export const surveyReadAll = () => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/survey/read/all`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+    },
+  });
+};
+
+export const surveyRemoveById = (id) => {
+  return fetch(`${process.env.REACT_APP_API_ADMIN}/survey/remove/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+    },
+  });
+};
+
+export const surveyUpdateById = (survey) => {
+  return fetch(
+    `${process.env.REACT_APP_API_ADMIN}/survey/update/${survey.id}`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        display: survey.display,
+        question: survey.question,
+        answerOne: survey.answerOne,
+        answerTwo: survey.answerTwo,
+        answerThree: survey.answerThree,
+        answerFour: survey.answerFour,
+        answerFive: survey.answerFive,
+      }),
+    }
+  );
+};

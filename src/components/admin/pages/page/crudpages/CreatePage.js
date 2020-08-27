@@ -62,7 +62,7 @@ const CreatePage = () => {
   // page form for fields
   const createPageForm = () => (
     <>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangePage("navbarName")}
           type="text"
@@ -70,7 +70,7 @@ const CreatePage = () => {
         />
         <label htmlFor="keywords">Navbar ime</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <select onChange={handleChangePage("navbarOrder")}>
           <option value="" disabled>
             Choose your option
@@ -83,7 +83,7 @@ const CreatePage = () => {
         </select>
         <label>Odaberi redosled</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangePage("videoUrl")}
           type="text"
@@ -91,7 +91,7 @@ const CreatePage = () => {
         />
         <label htmlFor="videourl">Video link</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangePage("imageUrl")}
           type="text"
@@ -99,7 +99,7 @@ const CreatePage = () => {
         />
         <label htmlFor="imageurl">Image link</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangePage("header")}
           type="text"

@@ -97,7 +97,7 @@ const CreateArticles = () => {
   // article form for fields
   const createArticleForm = () => (
     <>
-      <div className="input-field col s12 custom-margin">
+      <div className="input-field col s12 custom-margin input-fileds-custom">
         <select onChange={handleChangeArticle("categoryId")}>
           <option value="">Choose a category</option>
           {categories.map((category, i) => (
@@ -108,7 +108,7 @@ const CreateArticles = () => {
         </select>
         <label>Select category</label>
       </div>
-      <div className="input-field col s12 custom-margin">
+      <div className="input-field col s12 custom-margin input-fileds-custom">
         <input
           onChange={handleChangeArticle("keywords")}
           type="text"
@@ -116,7 +116,7 @@ const CreateArticles = () => {
         />
         <label htmlFor="keywords">Type keywords</label>
       </div>
-      <div className="input-field col s12 custom-margin">
+      <div className="input-field col s12 custom-margin input-fileds-custom">
         <input
           onChange={handleChangeArticle("videoUrl")}
           type="text"
@@ -124,7 +124,7 @@ const CreateArticles = () => {
         />
         <label htmlFor="videourl">Video link</label>
       </div>
-      <div className="input-field col s12 custom-margin">
+      <div className="input-field col s12 custom-margin input-fileds-custom">
         <input
           onChange={handleChangeArticle("imageUrl")}
           type="text"
@@ -132,7 +132,7 @@ const CreateArticles = () => {
         />
         <label htmlFor="imageurl">Image link</label>
       </div>
-      <div className="input-field col s12 custom-margin">
+      <div className="input-field col s12 custom-margin input-fileds-custom">
         <input
           onChange={handleChangeArticle("header")}
           type="text"
@@ -140,7 +140,7 @@ const CreateArticles = () => {
         />
         <label htmlFor="header">Naslov</label>
       </div>
-      <div className="input-field col s12 custom-margin">
+      <div className="input-field col s12 custom-margin input-fileds-custom">
         <input
           onChange={handleChangeArticle("author")}
           type="text"

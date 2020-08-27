@@ -13,23 +13,21 @@ import {
   sidebannersReadAllOrdered,
   articlesReadOrderedOnly8,
   articlesReadOrderedByMostViewedOnly8,
+  surveyReadByTrue,
 } from "../api/publicApi";
 import Sidebanners from "./Sidebanners";
-import Articles from "./articles/Articles";
+import ArticlesLatest from "./articles/ArticlesLatest";
 import ArticlesMostPopular from "./articles/ArticlesMostPopular";
+import Survey from "./Survey";
 
 const Home = () => {
   const {
-    video,
-    setVideo,
-    categories,
+    setVideoByDateOnly8,
     setCategories,
-    articles,
-    setArticles,
-    popularArticles,
+    setArticlesLatestOnly8,
     setPopularArticles,
-    sideBanners,
     setSideBanners,
+    setSurvey,
     loading,
     setLoading,
   } = React.useContext(PublicContext);
@@ -43,24 +41,27 @@ const Home = () => {
         articlesReadOrderedByMostViewedOnly8().then((response) =>
           response.json()
         ),
+        surveyReadByTrue().then((response) => response.json()),
       ]).then((responseJson) => {
-        setVideo(responseJson[0]);
+        setVideoByDateOnly8(responseJson[0]);
         setCategories(responseJson[1]);
         setSideBanners(responseJson[2]);
-        setArticles(responseJson[3]);
+        setArticlesLatestOnly8(responseJson[3]);
         setPopularArticles(responseJson[4]);
+        setSurvey(responseJson[5]);
         setLoading(false);
       });
     } catch (error) {
       console.log(error);
     }
   }, [
-    setVideo,
+    setVideoByDateOnly8,
     setCategories,
     setLoading,
     setSideBanners,
-    setArticles,
+    setArticlesLatestOnly8,
     setPopularArticles,
+    setSurvey,
   ]);
   return (
     <>
@@ -70,13 +71,14 @@ const Home = () => {
         <>
           <NavTop />
           <NavMiddle />
-          <NavBottom categories={categories} />
+          <NavBottom />
           <div className="container">
             <div className="home-grid">
-              <Videos videos={video} />
-              <Sidebanners sidebanners={sideBanners} />
-              <Articles articles={articles} />
-              <ArticlesMostPopular articles={popularArticles} />
+              <Videos />
+              <Sidebanners />
+              <ArticlesLatest />
+              <ArticlesMostPopular />
+              <Survey />
             </div>
           </div>
         </>

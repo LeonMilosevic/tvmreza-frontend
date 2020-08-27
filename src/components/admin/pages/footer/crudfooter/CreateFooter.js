@@ -50,7 +50,7 @@ const CreateFooterbanner = () => {
 
   const createFooterbannerForm = () => (
     <>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeFooterbanner("imageUrl")}
           type="text"
@@ -58,7 +58,7 @@ const CreateFooterbanner = () => {
         />
         <label htmlFor="keywords">Image link</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeFooterbanner("linkToUrl")}
           type="text"
@@ -66,7 +66,7 @@ const CreateFooterbanner = () => {
         />
         <label htmlFor="keywords">Link to a page</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <select onChange={handleChangeFooterbanner("footerbannerOrder")}>
           <option value="" disabled>
             Choose your option

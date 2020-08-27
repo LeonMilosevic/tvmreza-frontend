@@ -1,11 +1,15 @@
 import React from "react";
 
-const Sidebanners = (props) => {
+import { PublicContext } from "../../context/public/PublicContext";
+
+const Sidebanners = () => {
+  const { sideBanners } = React.useContext(PublicContext);
+
   return (
     <div className="grid-item-sidebanner">
       <div className="sidebanner-wrapper">
-        {props.sidebanners.map((sidebanner, i) => (
-          <div className="sidebanner">
+        {sideBanners.map((sidebanner, i) => (
+          <div key={i} className="sidebanner">
             <a href={sidebanner.linkToUrl}>
               <img
                 className="sidebanner-image"

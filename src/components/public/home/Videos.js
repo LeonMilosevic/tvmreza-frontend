@@ -2,12 +2,16 @@ import React, { useState } from "react";
 // import helpers
 import ReactPlayer from "react-player/youtube";
 
-const Videos = (props) => {
+import { PublicContext } from "../../context/public/PublicContext";
+
+const Videos = () => {
   const [mainVideoUrl, setMainVideoUrl] = useState("");
 
+  const { videoByDateOnly8 } = React.useContext(PublicContext);
+
   React.useEffect(() => {
-    setMainVideoUrl(props.videos[0].videoUrl);
-  }, [props.videos]);
+    setMainVideoUrl(videoByDateOnly8[0].videoUrl);
+  }, [videoByDateOnly8]);
 
   const handleClickChangeUrl = (video) => {
     setMainVideoUrl(video.videoUrl);
@@ -41,7 +45,7 @@ const Videos = (props) => {
             />
           </div>
           <div className="video-display-secondary">
-            {props.videos.map((video, i) => (
+            {videoByDateOnly8.map((video, i) => (
               <div
                 className="secondary-video"
                 onClick={() => handleClickChangeUrl(video)}

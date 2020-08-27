@@ -12,6 +12,7 @@ export const PublicContext = React.createContext();
 export const PublicProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [articles, setArticles] = useState([]);
+  const [articlesLatestOnly8, setArticlesLatestOnly8] = useState([]);
   const [popularArticles, setPopularArticles] = useState([]);
   const [sideBanners, setSideBanners] = useState([]);
   const [footerBanners, setFooterBanners] = useState([]);
@@ -19,6 +20,8 @@ export const PublicProvider = ({ children }) => {
   const [sporazum, setSporazum] = useState([]);
   const [tvlica, setTvlica] = useState([]);
   const [video, setVideo] = useState([]);
+  const [videoByDateOnly8, setVideoByDateOnly8] = useState([]);
+  const [survey, setSurvey] = useState({});
   const [loading, setLoading] = useState(true);
 
   return (
@@ -28,6 +31,8 @@ export const PublicProvider = ({ children }) => {
         setCategories,
         articles,
         setArticles,
+        articlesLatestOnly8,
+        setArticlesLatestOnly8,
         popularArticles,
         setPopularArticles,
         sideBanners,
@@ -42,6 +47,10 @@ export const PublicProvider = ({ children }) => {
         setTvlica,
         video,
         setVideo,
+        videoByDateOnly8,
+        setVideoByDateOnly8,
+        survey,
+        setSurvey,
         loading,
         setLoading,
       }}

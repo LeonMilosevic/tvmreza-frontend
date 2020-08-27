@@ -43,6 +43,16 @@
   color: $linksInputs !important;
 }
 
+[type="radio"]:checked + span:after,
+[type="radio"].with-gap:checked + span:after {
+  background-color: $darkBlue !important;
+}
+[type="radio"]:checked + span:after,
+[type="radio"].with-gap:checked + span:before,
+[type="radio"].with-gap:checked + span:after {
+  border: 2px solid $darkBlue !important;
+}
+
 /* override materialize icons */
 
 .material-icons {

@@ -48,7 +48,7 @@ const CreateBanner = () => {
 
   const createBannerForm = () => (
     <>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeBanner("imageUrl")}
           type="text"
@@ -56,7 +56,7 @@ const CreateBanner = () => {
         />
         <label htmlFor="keywords">Image link</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <input
           onChange={handleChangeBanner("linkToUrl")}
           type="text"
@@ -64,7 +64,7 @@ const CreateBanner = () => {
         />
         <label htmlFor="keywords">Link to a page</label>
       </div>
-      <div className="input-field col s12">
+      <div className="input-field col s12 input-fileds-custom">
         <select onChange={handleChangeBanner("sidebannerOrder")}>
           <option value="" disabled>
             Choose your option

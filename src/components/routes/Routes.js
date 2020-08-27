@@ -32,6 +32,11 @@ import ReadVideo from "../admin/pages/video/crudpages/ReadVideo";
 import CreateLica from "../admin/pages/tvlica/crudpages/CreateLica";
 import ReadLica from "../admin/pages/tvlica/crudpages/ReadLica";
 import Home from "../public/home/Home";
+import AdminSurvey from "../admin/pages/survey/AdminSurvey";
+import CreateSurvey from "../admin/pages/survey/crudpages/CreateSurvey";
+import ReadSurvey from "../admin/pages/survey/crudpages/ReadSurvey";
+import UpdateSurvey from "../admin/pages/survey/crudpages/UpdateSurvey";
+import ReadDetailsSurvey from "../admin/pages/survey/crudpages/ReadDetailsSurvey";
 
 /**
  * Component: Routes
@@ -113,6 +118,23 @@ const Routes = () => {
       <PrivateRoute exact path="/admin/videos" component={AdminVideo} />
       <PrivateRoute exact path="/admin/videos/create" component={CreateVideo} />
       <PrivateRoute exact path="/admin/videos/readall" component={ReadVideo} />
+      <PrivateRoute exact path="/admin/survey" component={AdminSurvey} />
+      <PrivateRoute
+        exact
+        path="/admin/survey/create"
+        component={CreateSurvey}
+      />
+      <PrivateRoute exact path="/admin/survey/readall" component={ReadSurvey} />
+      <PrivateRoute
+        exact
+        path="/admin/survey/update/:id"
+        component={UpdateSurvey}
+      />
+      <PrivateRoute
+        exact
+        path="/admin/survey/details/:id"
+        component={ReadDetailsSurvey}
+      />
       {/* public routes */}
       <Route exact path="/" component={Home} />
       <Route exact path="/public/admin/login" component={AdminLogin} />
