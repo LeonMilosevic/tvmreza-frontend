@@ -62,3 +62,12 @@ export const surveyReadByTrue = () => {
     method: "GET",
   });
 };
+
+export const voteSurvey = (id, answer) => {
+  return fetch(
+    `${process.env.REACT_APP_API_PUBLIC}/survey/vote/${id}/${answer}`,
+    {
+      method: "PUT",
+    }
+  );
+};

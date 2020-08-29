@@ -9,12 +9,12 @@ import CrudTab from "../../../dashboard/CrudTab";
 
 const ReadDetailsSurvey = () => {
   const [survey, setSurvey] = useState({});
-  const [totalVotes, setTotalVotes] = useState(0);
-  const [answerOnePercentage, setAnswerOnePercentage] = useState(0);
-  const [answerTwoPercecntage, setAnswerTwoPercecntage] = useState(0);
-  const [answerThreePercecntage, setAnswerThreePercecntage] = useState(0);
-  const [answerFourPercecntage, setAnswerFourPercecntage] = useState(0);
-  const [answerFivePercecntage, setAnswerFivePercecntage] = useState(0);
+  const [totalVotes, setTotalVotes] = useState("0");
+  const [answerOnePercentage, setAnswerOnePercentage] = useState("0");
+  const [answerTwoPercecntage, setAnswerTwoPercecntage] = useState("0");
+  const [answerThreePercecntage, setAnswerThreePercecntage] = useState("0");
+  const [answerFourPercecntage, setAnswerFourPercecntage] = useState("0");
+  const [answerFivePercecntage, setAnswerFivePercecntage] = useState("0");
 
   let location = useLocation();
 
@@ -23,10 +23,11 @@ const ReadDetailsSurvey = () => {
   }, [location]);
 
   useEffect(() => {
-    addSumOfAllAnswers();
-    calculatePercentageForEachAnswer();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (survey.answerOneCount !== undefined) {
+      addSumOfAllAnswers();
+      calculatePercentageForEachAnswer();
+    }
+  }, [survey, totalVotes]);
 
   const addSumOfAllAnswers = () => {
     const total =
@@ -46,41 +47,43 @@ const ReadDetailsSurvey = () => {
     let answerFourCount = survey.answerFourCount;
     let answerFiveCount = survey.answerFiveCount;
 
-    if (answerOneCount !== null) {
-      let answerOnePercentageTemp = calculatePercentage(
-        answerOneCount,
-        totalVotes
-      );
-      setAnswerOnePercentage(answerOnePercentageTemp);
-    }
-    if (answerTwoCount !== null) {
-      let answerTwoPercentageTemp = calculatePercentage(
-        answerOneCount,
-        totalVotes
-      );
-      setAnswerTwoPercecntage(answerTwoPercentageTemp);
-    }
-    if (answerThreeCount !== null) {
-      let answerThreePercentageTemp = calculatePercentage(
-        answerOneCount,
-        totalVotes
-      );
-      setAnswerThreePercecntage(answerThreePercentageTemp);
-    }
-    if (answerFourCount !== null) {
-      let answerFourPercentageTemp = calculatePercentage(
-        answerOneCount,
-        totalVotes
-      );
-      setAnswerFourPercecntage(answerFourPercentageTemp);
-    }
+    if (answerOneCount !== undefined) {
+      if (answerOneCount !== null) {
+        let answerOnePercentageTemp = calculatePercentage(
+          answerOneCount,
+          totalVotes
+        );
+        setAnswerOnePercentage(answerOnePercentageTemp);
+      }
+      if (answerTwoCount !== null) {
+        let answerTwoPercentageTemp = calculatePercentage(
+          answerTwoCount,
+          totalVotes
+        );
+        setAnswerTwoPercecntage(answerTwoPercentageTemp);
+      }
+      if (answerThreeCount !== null) {
+        let answerThreePercentageTemp = calculatePercentage(
+          answerThreeCount,
+          totalVotes
+        );
+        setAnswerThreePercecntage(answerThreePercentageTemp);
+      }
+      if (answerFourCount !== null) {
+        let answerFourPercentageTemp = calculatePercentage(
+          answerFourCount,
+          totalVotes
+        );
+        setAnswerFourPercecntage(answerFourPercentageTemp);
+      }
 
-    if (answerFiveCount !== null) {
-      let answerFivePercentageTemp = calculatePercentage(
-        answerOneCount,
-        totalVotes
-      );
-      setAnswerFivePercecntage(answerFivePercentageTemp);
+      if (answerFiveCount !== null) {
+        let answerFivePercentageTemp = calculatePercentage(
+          answerFiveCount,
+          totalVotes
+        );
+        setAnswerFivePercecntage(answerFivePercentageTemp);
+      }
     }
   };
 
@@ -107,7 +110,7 @@ const ReadDetailsSurvey = () => {
                         ? "0"
                         : survey.answerOneCount}
                     </td>
-                    <td>{answerOnePercentage.toString()}</td>
+                    <td>{answerOnePercentage.toString().slice(0, 5)}%</td>
                   </tr>
                   <tr>
                     <td>{survey.answerTwo}</td>
@@ -116,7 +119,7 @@ const ReadDetailsSurvey = () => {
                         ? "0"
                         : survey.answerTwoCount}
                     </td>
-                    <td>{answerTwoPercecntage.toString()}</td>
+                    <td>{answerTwoPercecntage.toString().slice(0, 5)}%</td>
                   </tr>
                   <tr>
                     <td>{survey.answerThree}</td>
@@ -125,7 +128,7 @@ const ReadDetailsSurvey = () => {
                         ? "0"
                         : survey.answerThreeCount}
                     </td>
-                    <td>{answerThreePercecntage.toString()}</td>
+                    <td>{answerThreePercecntage.toString().slice(0, 5)}%</td>
                   </tr>
                   <tr>
                     <td>{survey.answerFour}</td>
@@ -134,7 +137,7 @@ const ReadDetailsSurvey = () => {
                         ? "0"
                         : survey.answerFourCount}
                     </td>
-                    <td>{answerFourPercecntage.toString()}</td>
+                    <td>{answerFourPercecntage.toString().slice(0, 5)}%</td>
                   </tr>
                   <tr>
                     <td>{survey.answerFive}</td>
@@ -143,11 +146,11 @@ const ReadDetailsSurvey = () => {
                         ? "0"
                         : survey.answerFiveCount}
                     </td>
-                    <td>{answerFivePercecntage.toString()}</td>
+                    <td>{answerFivePercecntage.toString().slice(0, 5)}%</td>
                   </tr>
                   <tr>
                     <td>total</td>
-                    <td>{totalVotes.toString()}</td>
+                    <td>{totalVotes.toString().slice(0, 5)}</td>
                     <td>100%</td>
                   </tr>
                 </tbody>
