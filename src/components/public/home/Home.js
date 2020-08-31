@@ -14,11 +14,15 @@ import {
   articlesReadOrderedOnly8,
   articlesReadOrderedByMostViewedOnly8,
   surveyReadByTrue,
+  footerBannerReadByOrder,
 } from "../api/publicApi";
 import Sidebanners from "./Sidebanners";
 import ArticlesLatest from "./articles/ArticlesLatest";
 import ArticlesMostPopular from "./articles/ArticlesMostPopular";
-import Survey from "./Survey";
+import Survey from "./survey/Survey";
+import ArticlesByCategory from "./articles/ArticlesByCategory";
+import Footerbanners from "./Footerbanners";
+import Footer from "./Footer";
 
 const Home = () => {
   const {
@@ -28,6 +32,7 @@ const Home = () => {
     setPopularArticles,
     setSideBanners,
     setSurvey,
+    setFooterBanners,
     loading,
     setLoading,
   } = React.useContext(PublicContext);
@@ -42,6 +47,7 @@ const Home = () => {
           response.json()
         ),
         surveyReadByTrue().then((response) => response.json()),
+        footerBannerReadByOrder().then((response) => response.json()),
       ]).then((responseJson) => {
         setVideoByDateOnly8(responseJson[0]);
         setCategories(responseJson[1]);
@@ -49,6 +55,7 @@ const Home = () => {
         setArticlesLatestOnly8(responseJson[3]);
         setPopularArticles(responseJson[4]);
         setSurvey(responseJson[5]);
+        setFooterBanners(responseJson[6]);
         setLoading(false);
       });
     } catch (error) {
@@ -62,6 +69,7 @@ const Home = () => {
     setArticlesLatestOnly8,
     setPopularArticles,
     setSurvey,
+    setFooterBanners,
   ]);
   return (
     <>
@@ -80,7 +88,10 @@ const Home = () => {
               <ArticlesMostPopular />
               <Survey />
             </div>
+            <ArticlesByCategory />
+            <Footerbanners />
           </div>
+          <Footer />
         </>
       )}
     </>

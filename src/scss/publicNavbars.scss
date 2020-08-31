@@ -54,6 +54,23 @@
   background-color: $brightBlue !important;
 }
 
+.nav-middle-social {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 25%;
+}
+
+.nav-icon-color {
+  color: $darkGray;
+  font-size: 18px;
+}
+
+.nav-icon-color-f {
+  color: $white;
+  font-size: 18px;
+}
+
 /* nav-bottom */
 .nav-bottom-custom {
   background-color: $brightBlue;

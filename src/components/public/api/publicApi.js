@@ -71,3 +71,13 @@ export const voteSurvey = (id, answer) => {
     }
   );
 };
+
+// footerbanner read
+export const footerBannerReadByOrder = () => {
+  return fetch(
+    `${process.env.REACT_APP_API_PUBLIC}/footerbanner/read/all/ordered`,
+    {
+      method: "GET",
+    }
+  );
+};

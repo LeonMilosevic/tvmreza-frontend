@@ -197,6 +197,120 @@
   }
 }
 
+.survey-result-card {
+  position: relative;
+  width: 90%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px auto;
+  padding: 0 10px;
+  border-radius: 2px;
+  background-color: $white;
+  &::before {
+    content: "";
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: calc(var(--width, 0) * 1%);
+    min-width: 0%;
+    max-width: 100%;
+    background-color: lighten($color: $darkBlue, $amount: 30);
+  }
+}
+
+.survey-result-percentage {
+  z-index: 5;
+  font-weight: 700;
+  font-size: 12px;
+  color: darken($color: $darkBlue, $amount: 20);
+}
+
+.survey-result-answer {
+  z-index: 5;
+  font-weight: 700;
+  font-size: 12px;
+  color: darken($color: $darkBlue, $amount: 20);
+}
+
+.error-msg-survey {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: $red;
+  width: 80%;
+  height: 30px;
+  margin: 20px auto;
+  color: $white;
+}
+
+// article by category
+
+.article-by-category-header {
+  border-bottom: 4px solid $brightBlue;
+  padding-bottom: 10px;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.articles-by-caregory-wrapper {
+  margin-left: 2%;
+}
+
+.margin-top-2 {
+  margin-top: 2%;
+}
+
+.custom-card {
+  width: 90%;
+  height: 350px;
+}
+
+.card-title-custom {
+  background-color: $red;
+  position: absolute;
+  left: 5% !important;
+  bottom: 15% !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  padding: 2px 5px !important;
+}
+
+// footerbanner
+.footerbanner-image {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.center-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+// footer
+
+.footer-copyright-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-social {
+  display: flex;
+  width: 10%;
+  justify-content: space-around;
+}
+
 // grid
 
 .home-grid {

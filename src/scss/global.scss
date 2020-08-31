@@ -62,3 +62,8 @@
 .material-icons.active {
   color: $linksInputs !important;
 }
+
+/* override materialize footer */
+.page-footer {
+  background-color: $lightGrayish !important;
+}

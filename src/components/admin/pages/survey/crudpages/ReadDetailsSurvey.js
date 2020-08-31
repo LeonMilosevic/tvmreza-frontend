@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from "react";
 // import helpers
 import { useLocation } from "react-router-dom";
-import { calculatePercentage } from "../../../../utils/PercentageCalculator";
+import {
+  calculatePercentage,
+  addSumOfAllAnswers,
+} from "../../../../utils/PercentageCalculator";
 // import comopnents
 import AdminNavbar from "../../../dashboard/AdminNavbar";
 import AdminManagementNavbar from "../../../dashboard/AdminManagementNavbar";
 import CrudTab from "../../../dashboard/CrudTab";
 
+/**
+ * Read details Survey component
+ *
+ * we init empty survey state, populate it from location so we dont have to make a query call,
+ * we init totalVotes state to help us calculate percentage per answer
+ * we init each answer with a starting value of 0
+ *
+ */
 const ReadDetailsSurvey = () => {
   const [survey, setSurvey] = useState({});
   const [totalVotes, setTotalVotes] = useState("0");
   const [answerOnePercentage, setAnswerOnePercentage] = useState("0");
-  const [answerTwoPercecntage, setAnswerTwoPercecntage] = useState("0");
-  const [answerThreePercecntage, setAnswerThreePercecntage] = useState("0");
-  const [answerFourPercecntage, setAnswerFourPercecntage] = useState("0");
-  const [answerFivePercecntage, setAnswerFivePercecntage] = useState("0");
+  const [answerTwoPercentage, setAnswerTwoPercentage] = useState("0");
+  const [answerThreePercentage, setAnswerThreePercentage] = useState("0");
+  const [answerFourPercentage, setAnswerFourPercentage] = useState("0");
+  const [answerFivePercentage, setAnswerFivePercentage] = useState("0");
 
   let location = useLocation();
 
@@ -24,68 +35,48 @@ const ReadDetailsSurvey = () => {
 
   useEffect(() => {
     if (survey.answerOneCount !== undefined) {
-      addSumOfAllAnswers();
-      calculatePercentageForEachAnswer();
+      setTotalVotes(
+        addSumOfAllAnswers(
+          survey.answerOneCount,
+          survey.answerTwoCount,
+          survey.answerThreeCount,
+          survey.answerFourCount,
+          survey.answerFiveCount
+        )
+      );
     }
-  }, [survey, totalVotes]);
+  }, [
+    survey.answerOneCount,
+    survey.answerTwoCount,
+    survey.answerThreeCount,
+    survey.answerFourCount,
+    survey.answerFiveCount,
+  ]);
 
-  const addSumOfAllAnswers = () => {
-    const total =
-      survey.answerOneCount +
-      survey.answerTwoCount +
-      survey.answerThreeCount +
-      survey.answerFourCount +
-      survey.answerFiveCount;
-
-    setTotalVotes(total);
-  };
-
-  const calculatePercentageForEachAnswer = () => {
-    let answerOneCount = survey.answerOneCount;
-    let answerTwoCount = survey.answerTwoCount;
-    let answerThreeCount = survey.answerThreeCount;
-    let answerFourCount = survey.answerFourCount;
-    let answerFiveCount = survey.answerFiveCount;
-
-    if (answerOneCount !== undefined) {
-      if (answerOneCount !== null) {
-        let answerOnePercentageTemp = calculatePercentage(
-          answerOneCount,
-          totalVotes
-        );
-        setAnswerOnePercentage(answerOnePercentageTemp);
-      }
-      if (answerTwoCount !== null) {
-        let answerTwoPercentageTemp = calculatePercentage(
-          answerTwoCount,
-          totalVotes
-        );
-        setAnswerTwoPercecntage(answerTwoPercentageTemp);
-      }
-      if (answerThreeCount !== null) {
-        let answerThreePercentageTemp = calculatePercentage(
-          answerThreeCount,
-          totalVotes
-        );
-        setAnswerThreePercecntage(answerThreePercentageTemp);
-      }
-      if (answerFourCount !== null) {
-        let answerFourPercentageTemp = calculatePercentage(
-          answerFourCount,
-          totalVotes
-        );
-        setAnswerFourPercecntage(answerFourPercentageTemp);
-      }
-
-      if (answerFiveCount !== null) {
-        let answerFivePercentageTemp = calculatePercentage(
-          answerFiveCount,
-          totalVotes
-        );
-        setAnswerFivePercecntage(answerFivePercentageTemp);
-      }
-    }
-  };
+  useEffect(() => {
+    setAnswerOnePercentage(
+      calculatePercentage(survey.answerOneCount, totalVotes)
+    );
+    setAnswerTwoPercentage(
+      calculatePercentage(survey.answerTwoCount, totalVotes)
+    );
+    setAnswerThreePercentage(
+      calculatePercentage(survey.answerThreeCount, totalVotes)
+    );
+    setAnswerFourPercentage(
+      calculatePercentage(survey.answerFourCount, totalVotes)
+    );
+    setAnswerFivePercentage(
+      calculatePercentage(survey.answerFiveCount, totalVotes)
+    );
+  }, [
+    survey.answerOneCount,
+    survey.answerTwoCount,
+    survey.answerThreeCount,
+    survey.answerFourCount,
+    survey.answerFiveCount,
+    totalVotes,
+  ]);
 
   const readDetailsSurveyForm = () => (
     <>
@@ -119,7 +110,7 @@ const ReadDetailsSurvey = () => {
                         ? "0"
                         : survey.answerTwoCount}
                     </td>
-                    <td>{answerTwoPercecntage.toString().slice(0, 5)}%</td>
+                    <td>{answerTwoPercentage.toString().slice(0, 5)}%</td>
                   </tr>
                   <tr>
                     <td>{survey.answerThree}</td>
@@ -128,7 +119,7 @@ const ReadDetailsSurvey = () => {
                         ? "0"
                         : survey.answerThreeCount}
                     </td>
-                    <td>{answerThreePercecntage.toString().slice(0, 5)}%</td>
+                    <td>{answerThreePercentage.toString().slice(0, 5)}%</td>
                   </tr>
                   <tr>
                     <td>{survey.answerFour}</td>
@@ -137,7 +128,7 @@ const ReadDetailsSurvey = () => {
                         ? "0"
                         : survey.answerFourCount}
                     </td>
-                    <td>{answerFourPercecntage.toString().slice(0, 5)}%</td>
+                    <td>{answerFourPercentage.toString().slice(0, 5)}%</td>
                   </tr>
                   <tr>
                     <td>{survey.answerFive}</td>
@@ -146,7 +137,7 @@ const ReadDetailsSurvey = () => {
                         ? "0"
                         : survey.answerFiveCount}
                     </td>
-                    <td>{answerFivePercecntage.toString().slice(0, 5)}%</td>
+                    <td>{answerFivePercentage.toString().slice(0, 5)}%</td>
                   </tr>
                   <tr>
                     <td>total</td>
