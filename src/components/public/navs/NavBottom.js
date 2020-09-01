@@ -15,7 +15,10 @@ const NavBottom = () => {
           {categories.map((category, i) => (
             <NavLink
               key={i}
-              to={`/${category.categoryName}/${category.id}`}
+              to={{
+                pathname: `/kategorija/${category.categoryName}`,
+                category,
+              }}
               className="nav-bottom-link"
             >
               {category.categoryName}

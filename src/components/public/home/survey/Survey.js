@@ -130,16 +130,22 @@ const Survey = () => {
   );
 
   return (
-    <div className="grid-item-survey">
-      {displayResults ? (
-        <SurveyResults
-          survey={surveyLocal}
-          setDisplayResults={setDisplayResults}
-        />
+    <>
+      {survey === undefined ? (
+        ""
       ) : (
-        surveyDisplayForm()
+        <div className="grid-item-survey">
+          {displayResults ? (
+            <SurveyResults
+              survey={surveyLocal}
+              setDisplayResults={setDisplayResults}
+            />
+          ) : (
+            surveyDisplayForm()
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

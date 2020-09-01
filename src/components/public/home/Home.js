@@ -46,7 +46,13 @@ const Home = () => {
         articlesReadOrderedByMostViewedOnly8().then((response) =>
           response.json()
         ),
-        surveyReadByTrue().then((response) => response.json()),
+        surveyReadByTrue().then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          } else {
+            return undefined;
+          }
+        }),
         footerBannerReadByOrder().then((response) => response.json()),
       ]).then((responseJson) => {
         setVideoByDateOnly8(responseJson[0]);

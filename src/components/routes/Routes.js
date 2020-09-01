@@ -37,6 +37,7 @@ import CreateSurvey from "../admin/pages/survey/crudpages/CreateSurvey";
 import ReadSurvey from "../admin/pages/survey/crudpages/ReadSurvey";
 import UpdateSurvey from "../admin/pages/survey/crudpages/UpdateSurvey";
 import ReadDetailsSurvey from "../admin/pages/survey/crudpages/ReadDetailsSurvey";
+import ArticleByCategory from "../public/pages/articles/ArticlesByCategory";
 
 /**
  * Component: Routes
@@ -138,6 +139,7 @@ const Routes = () => {
       {/* public routes */}
       <Route exact path="/" component={Home} />
       <Route exact path="/public/admin/login" component={AdminLogin} />
+      <Route exact path="/kategorija/:name" component={ArticleByCategory} />
     </Switch>
   );
 };
