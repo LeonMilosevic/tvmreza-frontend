@@ -1,5 +1,5 @@
 import React from "react";
-import ArticleCard from "./ArticleCard";
+import ArticleCard from "../../reusable/ArticleCard";
 
 import { PublicContext } from "../../../context/public/PublicContext";
 

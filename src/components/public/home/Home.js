@@ -16,13 +16,13 @@ import {
   surveyReadByTrue,
   footerBannerReadByOrder,
 } from "../api/publicApi";
-import Sidebanners from "./Sidebanners";
+import Sidebanners from "../reusable/Sidebanners";
 import ArticlesLatest from "./articles/ArticlesLatest";
 import ArticlesMostPopular from "./articles/ArticlesMostPopular";
 import Survey from "./survey/Survey";
 import ArticlesByCategory from "./articles/ArticlesByCategory";
-import Footerbanners from "./Footerbanners";
-import Footer from "./Footer";
+import Footerbanners from "../reusable/Footerbanners";
+import Footer from "../reusable/Footer";
 
 const Home = () => {
   const {
