@@ -30,7 +30,7 @@ const NavMiddle = () => {
             </div>
             <div>
               <Link
-                to="/public/videos"
+                to="/video/poslednji"
                 className="nav-btn waves-effect waves-light btn-large"
               >
                 <i className="material-icons right">play_circle_outline</i>Video

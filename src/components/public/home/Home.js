@@ -1,10 +1,5 @@
 import React, { useEffect } from "react";
-// import components
-import NavTop from "../navs/NavTop";
-import NavMiddle from "../navs/NavMiddle";
-import NavBottom from "../navs/NavBottom";
-import Videos from "./Videos";
-import SpinnerDots from "../ui/SpinnerDots";
+
 // import helpers
 import { PublicContext } from "../../context/public/PublicContext";
 import {
@@ -16,6 +11,12 @@ import {
   surveyReadByTrue,
   footerBannerReadByOrder,
 } from "../api/publicApi";
+// import components
+import NavTop from "../navs/NavTop";
+import NavMiddle from "../navs/NavMiddle";
+import NavBottom from "../navs/NavBottom";
+import Videos from "./Videos";
+import SpinnerDots from "../ui/SpinnerDots";
 import Sidebanners from "../reusable/Sidebanners";
 import ArticlesLatest from "./articles/ArticlesLatest";
 import ArticlesMostPopular from "./articles/ArticlesMostPopular";
@@ -29,7 +30,7 @@ const Home = () => {
     setVideoByDateOnly8,
     setCategories,
     setArticlesLatestOnly8,
-    setPopularArticles,
+    setArticlesMostPopularOnly8,
     setSideBanners,
     setSurvey,
     setFooterBanners,
@@ -59,7 +60,7 @@ const Home = () => {
         setCategories(responseJson[1]);
         setSideBanners(responseJson[2]);
         setArticlesLatestOnly8(responseJson[3]);
-        setPopularArticles(responseJson[4]);
+        setArticlesMostPopularOnly8(responseJson[4]);
         setSurvey(responseJson[5]);
         setFooterBanners(responseJson[6]);
         setLoading(false);
@@ -73,7 +74,7 @@ const Home = () => {
     setLoading,
     setSideBanners,
     setArticlesLatestOnly8,
-    setPopularArticles,
+    setArticlesMostPopularOnly8,
     setSurvey,
     setFooterBanners,
   ]);

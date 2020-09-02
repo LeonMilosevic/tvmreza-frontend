@@ -11,15 +11,16 @@ export const PublicContext = React.createContext();
 
 export const PublicProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
-  const [articles, setArticles] = useState([]);
+  const [articlesByLatest, setArticlesByLatest] = useState([]);
+  const [articlesMostPopular, setArticlesMostPopular] = useState([]);
   const [articlesLatestOnly8, setArticlesLatestOnly8] = useState([]);
-  const [popularArticles, setPopularArticles] = useState([]);
+  const [articlesMostPopularOnly8, setArticlesMostPopularOnly8] = useState([]);
   const [sideBanners, setSideBanners] = useState([]);
   const [footerBanners, setFooterBanners] = useState([]);
   const [navPages, setNavPages] = useState([]);
   const [sporazum, setSporazum] = useState([]);
   const [tvlica, setTvlica] = useState([]);
-  const [video, setVideo] = useState([]);
+  const [videosByLatest, setVideosByLatest] = useState([]);
   const [videoByDateOnly8, setVideoByDateOnly8] = useState([]);
   const [survey, setSurvey] = useState({});
   const [loading, setLoading] = useState(true);
@@ -29,12 +30,14 @@ export const PublicProvider = ({ children }) => {
       value={{
         categories,
         setCategories,
-        articles,
-        setArticles,
+        articlesByLatest,
+        setArticlesByLatest,
+        articlesMostPopular,
+        setArticlesMostPopular,
         articlesLatestOnly8,
         setArticlesLatestOnly8,
-        popularArticles,
-        setPopularArticles,
+        articlesMostPopularOnly8,
+        setArticlesMostPopularOnly8,
         sideBanners,
         setSideBanners,
         footerBanners,
@@ -45,8 +48,8 @@ export const PublicProvider = ({ children }) => {
         setSporazum,
         tvlica,
         setTvlica,
-        video,
-        setVideo,
+        videosByLatest,
+        setVideosByLatest,
         videoByDateOnly8,
         setVideoByDateOnly8,
         survey,

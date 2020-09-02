@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 // import helpers
 import ReactPlayer from "react-player/youtube";
+import { YouTubeGetID } from "../../utils/youtubeImageFunction";
+import { Link } from "react-router-dom";
 
 import { PublicContext } from "../../context/public/PublicContext";
 
@@ -17,24 +19,14 @@ const Videos = () => {
     setMainVideoUrl(video.videoUrl);
   };
 
-  function YouTubeGetID(url) {
-    var ID = "";
-    url = url
-      .replace(/(>|<)/gi, "")
-      .split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
-    if (url[2] !== undefined) {
-      ID = url[2].split(/[^0-9a-z_\\-]/i);
-      ID = ID[0];
-    } else {
-      ID = url;
-    }
-    return ID;
-  }
-
   const displayVideos = () => (
     <>
       <div className="grid-item-video">
-        <div className="video-display-header">Najnoviji video</div>
+        <div className="video-display-header">
+          <Link className="empty-link" to="/video/poslednji">
+            Najnoviji video
+          </Link>
+        </div>
         <div className="video-grid">
           <div className="video-display-main">
             <ReactPlayer

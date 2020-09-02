@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 // import helpers
 import { PublicContext } from "../../../context/public/PublicContext";
-import { videosectionReadAllByDate } from "../../api/publicApi";
+import { sporazumReadAllOrdedred } from "../../api/publicApi";
 import SpinnerDots from "../../ui/SpinnerDots";
 import NavTop from "../../navs/NavTop";
 import NavMiddle from "../../navs/NavMiddle";
@@ -11,21 +11,21 @@ import VideoCard from "../../reusable/VideoCard";
 import Footerbanners from "../../reusable/Footerbanners";
 import Footer from "../../reusable/Footer";
 
-const VideosByLatest = () => {
+const SporazumByLatest = () => {
   const [loading, setLoading] = useState(true);
-  const { videosByLatest, setVideosByLatest } = useContext(PublicContext);
+  const { sporazum, setSporazum } = useContext(PublicContext);
 
   useEffect(() => {
-    videosectionReadAllByDate()
+    sporazumReadAllOrdedred()
       .then((response) => response.json())
       .then((responseJson) => {
-        setVideosByLatest(responseJson);
+        setSporazum(responseJson);
         setLoading(false);
       })
       .catch((error) => console.log(error));
-  }, [setVideosByLatest]);
+  }, [setSporazum]);
 
-  const displayVideosByLatest = () => (
+  const displaySporazumByLatest = () => (
     <>
       <NavTop />
       <NavMiddle />
@@ -42,7 +42,7 @@ const VideosByLatest = () => {
             </div>
             <div className="row">
               <div className="col s9 m9">
-                {videosByLatest.map((video, i) => (
+                {sporazum.map((video, i) => (
                   <VideoCard key={i} video={video} />
                 ))}
               </div>
@@ -58,7 +58,7 @@ const VideosByLatest = () => {
     </>
   );
 
-  return <>{displayVideosByLatest()}</>;
+  return <>{displaySporazumByLatest()}</>;
 };
 
-export default VideosByLatest;
+export default SporazumByLatest;

@@ -9,7 +9,11 @@ const ArticleCard = (props) => {
     <>
       <div className="article-card">
         <div className="article-card-img-wrapper">
-          <Link to={`/novosti/${props.article.header}`}>
+          <Link
+            to={{
+              pathname: `/vest/${props.article.header}/${props.article.id}`,
+            }}
+          >
             <img
               className="article-card-img"
               src={props.article.imageUrl}
@@ -25,18 +29,13 @@ const ArticleCard = (props) => {
           </Link>
         </div>
         <div className="article-text">
-          <div className="article-category">
-            <Link
-              className="empty-link"
-              to={`/kategorija/${props.article.categoryName}`}
-            >
-              {props.article.categoryName}
-            </Link>
-          </div>
+          <div className="article-category">{props.article.categoryName}</div>
           <div className="article-header">
             <Link
               className="empty-link"
-              to={`/novosti/${props.article.header}`}
+              to={{
+                pathname: `/vest/${props.article.header}/${props.article.id}`,
+              }}
             >
               {props.article.header}
             </Link>

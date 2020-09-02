@@ -46,6 +46,12 @@ export const articlesReadOrderedOnly8 = () => {
   );
 };
 
+export const articlesReadOrderedByDate = () => {
+  return fetch(`${process.env.REACT_APP_API_PUBLIC}/article/read/all/newest`, {
+    method: "GET",
+  });
+};
+
 export const articlesReadOrderedByMostViewedOnly8 = () => {
   return fetch(
     `${process.env.REACT_APP_API_PUBLIC}/article/read/all/mostviewed/8`,
@@ -53,6 +59,21 @@ export const articlesReadOrderedByMostViewedOnly8 = () => {
       method: "GET",
     }
   );
+};
+
+export const articlesReadOrderedByMostViewed = () => {
+  return fetch(
+    `${process.env.REACT_APP_API_PUBLIC}/article/read/all/mostviewed`,
+    {
+      method: "GET",
+    }
+  );
+};
+
+export const articleReadById = (id) => {
+  return fetch(`${process.env.REACT_APP_API_PUBLIC}/article/read/${id}`, {
+    method: "GET",
+  });
 };
 
 // Survey read and update
@@ -80,4 +101,30 @@ export const footerBannerReadByOrder = () => {
       method: "GET",
     }
   );
+};
+
+// sporazum
+export const sporazumReadAllOrdedred = () => {
+  return fetch(
+    `${process.env.REACT_APP_API_PUBLIC}/sporazum/read/all/ordered`,
+    {
+      method: "GET",
+    }
+  );
+};
+
+// post
+
+export const createPost = (post) => {
+  return fetch(`${process.env.REACT_APP_API_PUBLIC}/post/create`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+    },
+    body: JSON.stringify({
+      articleId: post.articleId,
+      username: post.username,
+      textContent: post.textContent,
+    }),
+  });
 };

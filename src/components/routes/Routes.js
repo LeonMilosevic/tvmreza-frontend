@@ -38,6 +38,11 @@ import ReadSurvey from "../admin/pages/survey/crudpages/ReadSurvey";
 import UpdateSurvey from "../admin/pages/survey/crudpages/UpdateSurvey";
 import ReadDetailsSurvey from "../admin/pages/survey/crudpages/ReadDetailsSurvey";
 import ArticleByCategory from "../public/pages/articles/ArticlesByCategory";
+import VideosByLatest from "../public/pages/videos/VideosByLatest";
+import ArticlesByLatest from "../public/pages/articles/ArticlesByLatest";
+import ArticlesByMostViewed from "../public/pages/articles/ArticlesByMostViewed";
+import SporazumByLatest from "../public/pages/sporazum/SporazumByLatest";
+import ArticleSingle from "../public/pages/articles/ArticleSingle";
 
 /**
  * Component: Routes
@@ -140,6 +145,15 @@ const Routes = () => {
       <Route exact path="/" component={Home} />
       <Route exact path="/public/admin/login" component={AdminLogin} />
       <Route exact path="/kategorija/:name" component={ArticleByCategory} />
+      <Route exact path="/video/poslednji" component={VideosByLatest} />
+      <Route exact path="/vesti/poslednje" component={ArticlesByLatest} />
+      <Route exact path="/vest/:name/:id" component={ArticleSingle} />
+      <Route
+        exact
+        path="/vesti/najpopularnije"
+        component={ArticlesByMostViewed}
+      />
+      <Route exact path="/sporazum/poslednje" component={SporazumByLatest} />
     </Switch>
   );
 };
