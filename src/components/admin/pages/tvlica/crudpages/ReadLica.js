@@ -69,8 +69,8 @@ const ReadLica = () => {
       <AdminNavbar />
       <AdminManagementNavbar />
       <CrudTab
-        createTo={"/admin/videos/create"}
-        readTo={"/admin/videos/readall"}
+        createTo={"/admin/tvfaces/create"}
+        readTo={"/admin/tvfaces/readall"}
       />
       {displayLica()}
     </>

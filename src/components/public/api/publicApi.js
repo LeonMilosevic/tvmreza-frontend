@@ -128,3 +128,10 @@ export const createPost = (post) => {
     }),
   });
 };
+
+// tv lica
+export const tvlicaReadAll = () => {
+  return fetch(`${process.env.REACT_APP_API_PUBLIC}/tvface/read/all`, {
+    method: "GET",
+  });
+};

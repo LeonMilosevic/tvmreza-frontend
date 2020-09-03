@@ -47,6 +47,7 @@ import OnamaMain from "../public/pages/static/onama/OnamaMain";
 import PartneriMain from "../public/pages/static/partneri/PartneriMain";
 import ProgramMain from "../public/pages/static/program/ProgramMain";
 import KontaktMain from "../public/pages/static/kontakt/KontaktMain";
+import LicaMain from "../public/pages/tvlica/LicaMain";
 
 /**
  * Component: Routes
@@ -162,6 +163,7 @@ const Routes = () => {
       <Route exact path="/partneri/:name" component={PartneriMain} />
       <Route exact path="/program/:name" component={ProgramMain} />
       <Route exact path="/kontakt/:name" component={KontaktMain} />
+      <Route exact path="/tvlica" component={LicaMain} />
     </Switch>
   );
 };

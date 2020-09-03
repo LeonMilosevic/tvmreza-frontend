@@ -24,3 +24,18 @@
 .partner-div-li-span {
   font-weight: 700;
 }
+
+.lica-wrapper {
+  width: 100%;
+  height: 200px;
+  background-color: $darkGray;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.lica-image {
+  object-fit: cover;
+  width: 20%;
+  height: 100%;
+}

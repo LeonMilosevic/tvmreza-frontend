@@ -1,32 +1,37 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import helpers
-import { PublicContext } from "../../../context/public/PublicContext";
-import { sporazumReadAllOrdedred } from "../../api/publicApi";
+import { tvlicaReadAll } from "../../api/publicApi";
 // import components
 import SpinnerDots from "../../ui/SpinnerDots";
 import NavTop from "../../navs/NavTop";
 import NavMiddle from "../../navs/NavMiddle";
 import NavBottom from "../../navs/NavBottom";
 import Sidebanners from "../../reusable/Sidebanners";
-import VideoCard from "../../reusable/VideoCard";
 import Footerbanners from "../../reusable/Footerbanners";
 import Footer from "../../reusable/Footer";
+import LicaCard from "./LicaCard";
 
-const SporazumByLatest = () => {
+const LicaMain = () => {
+  const [tvlica, setTvlica] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { sporazum, setSporazum } = useContext(PublicContext);
 
   useEffect(() => {
-    sporazumReadAllOrdedred()
-      .then((response) => response.json())
+    tvlicaReadAll()
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          return undefined;
+        }
+      })
       .then((responseJson) => {
-        setSporazum(responseJson);
+        setTvlica(responseJson);
         setLoading(false);
       })
       .catch((error) => console.log(error));
-  }, [setSporazum]);
+  }, []);
 
-  const displaySporazumByLatest = () => (
+  return (
     <>
       <NavTop />
       <NavMiddle />
@@ -38,13 +43,13 @@ const SporazumByLatest = () => {
           <div className="container">
             <div className="row margin-top2">
               <div className="col s9 m9">
-                <div className="video-display-header">Poslednji video</div>
+                <div className="video-display-header">TV Lica</div>
               </div>
             </div>
             <div className="row">
               <div className="col s9 m9">
-                {sporazum.map((video, i) => (
-                  <VideoCard key={i} video={video} />
+                {tvlica.map((lica, i) => (
+                  <LicaCard key={i} lica={lica} />
                 ))}
               </div>
               <div className="col s2 m2 offset-s1 offset-m1">
@@ -58,8 +63,6 @@ const SporazumByLatest = () => {
       )}
     </>
   );
-
-  return <>{displaySporazumByLatest()}</>;
 };
 
-export default SporazumByLatest;
+export default LicaMain;

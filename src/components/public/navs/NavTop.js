@@ -132,6 +132,9 @@ const NavTop = () => {
               <Link to="/kontakt/newpress">New Press Production</Link>
             </li>
           </ul>
+          <Link className="nav-top-link" to="/tvlica">
+            TV Lica
+          </Link>
         </div>
         <div className="nav-content-right">
           <div className="input-field">
