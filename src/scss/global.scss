@@ -6,9 +6,18 @@
   margin-top: 2%;
 }
 
+.logo-bg {
+  background-color: $lightGrayish;
+}
+
 /* override container */
 .container {
   width: 90% !important;
+}
+
+// override dropdown
+.dropdown-content {
+  width: auto !important;
 }
 
 .row,

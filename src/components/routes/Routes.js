@@ -43,6 +43,10 @@ import ArticlesByLatest from "../public/pages/articles/ArticlesByLatest";
 import ArticlesByMostViewed from "../public/pages/articles/ArticlesByMostViewed";
 import SporazumByLatest from "../public/pages/sporazum/SporazumByLatest";
 import ArticleSingle from "../public/pages/articles/ArticleSingle";
+import OnamaMain from "../public/pages/static/onama/OnamaMain";
+import PartneriMain from "../public/pages/static/partneri/PartneriMain";
+import ProgramMain from "../public/pages/static/program/ProgramMain";
+import KontaktMain from "../public/pages/static/kontakt/KontaktMain";
 
 /**
  * Component: Routes
@@ -154,6 +158,10 @@ const Routes = () => {
         component={ArticlesByMostViewed}
       />
       <Route exact path="/sporazum/poslednje" component={SporazumByLatest} />
+      <Route exact path="/onama/:name" component={OnamaMain} />
+      <Route exact path="/partneri/:name" component={PartneriMain} />
+      <Route exact path="/program/:name" component={ProgramMain} />
+      <Route exact path="/kontakt/:name" component={KontaktMain} />
     </Switch>
   );
 };

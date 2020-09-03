@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
 import parse from "html-react-parser";
 import M from "materialize-css";
+import Moment from "react-moment";
 // import components
 import NavTop from "../../navs/NavTop";
 import NavMiddle from "../../navs/NavMiddle";
@@ -13,6 +14,7 @@ import SpinnerDots from "../../ui/SpinnerDots";
 import Sidebanners from "../../reusable/Sidebanners";
 import Footer from "../../reusable/Footer";
 import Footerbanners from "../../reusable/Footerbanners";
+import SpinnerCircle from "../../ui/SpinnerCircle";
 
 const ArticleSingle = () => {
   const [article, setArticle] = useState({});
@@ -49,29 +51,36 @@ const ArticleSingle = () => {
   }, []);
 
   const handleChangeInput = (name) => (e) => {
+    setError("");
+    setSuccess("");
     setPost({ ...post, [name]: e.target.value });
   };
 
   const clickSubmitPost = (e) => {
-    e.preventDefault();
     if (
       post.articleId === null ||
       post.username === "" ||
       post.textContent === ""
     ) {
       setError("Sva polja su potrebna");
+    } else if (post.textContent.length > 356) {
+      setError("Text nesme biti duzi od 356 karaktera");
     } else {
       setPostCreateLoading(true);
       createPost(post)
         .then((response) => {
           if (response.status === 200) {
+            setPostCreateLoading(false);
             setSuccess("Uspesno ste postavili komentar");
+            setPost({ ...post, username: "", textContent: "" });
           } else {
+            setPostCreateLoading(false);
             setError("Nesto je poslo napokao");
           }
         })
         .catch((error) => console.log(error));
     }
+    e.preventDefault();
   };
 
   return (
@@ -89,7 +98,13 @@ const ArticleSingle = () => {
                 <div className="singlearticle-header">{article.header}</div>
                 <div className="singlearticle-subheader">
                   <div>{article.categoryName}</div>
-                  <div>{article.dateDisplay.slice(0, 10)}</div>
+                  <div>
+                    <Moment
+                      format="D MMM YYYY"
+                      date={article.dateDisplay}
+                      withTitle
+                    />
+                  </div>
                   <div>{article.author}</div>
                 </div>
               </div>
@@ -131,6 +146,7 @@ const ArticleSingle = () => {
                         id="name"
                         type="text"
                         className="validate"
+                        value={post.username}
                       />
                       <label htmlFor="name">Vaše ime*</label>
                     </div>
@@ -139,23 +155,44 @@ const ArticleSingle = () => {
                         onChange={handleChangeInput("textContent")}
                         id="komentar"
                         className="materialize-textarea"
+                        value={post.textContent}
                       ></textarea>
                       <label htmlFor="komentar">Vaš komentar*</label>
                     </div>
-                    <button
-                      onClick={clickSubmitPost}
-                      className="survey-btn survey-btn-filled"
-                    >
-                      Postavi
-                    </button>
+                    {postCreateLoading ? (
+                      <SpinnerCircle />
+                    ) : (
+                      <button
+                        onClick={clickSubmitPost}
+                        className="survey-btn survey-btn-filled"
+                      >
+                        Postavi
+                      </button>
+                    )}
+
+                    {success ? (
+                      <div className="custom-success">{success}</div>
+                    ) : (
+                      ""
+                    )}
+                    {error ? <div className="custom-error">{error}</div> : ""}
                   </div>
                 </div>
                 <div className="singlearticle-post-comment-area">
                   {article.posts.map((post, i) => (
                     <div className="signlearticle-post-comment-wrapper" key={i}>
                       <div className="signlearticle-post-comment-header">
-                        <span>{post.username}</span> |
-                        <span>{post.dateCreated.slice(0, 10)}</span>
+                        <span className="signlearticle-post-comment-username">
+                          {post.username}
+                        </span>{" "}
+                        |{" "}
+                        <span className="signlearticle-post-comment-date">
+                          <Moment
+                            format="D MMM YYYY"
+                            date={post.dateCreated}
+                            withTitle
+                          />
+                        </span>
                       </div>
                       {post.textContent}
                     </div>

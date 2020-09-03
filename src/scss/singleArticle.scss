@@ -56,3 +56,45 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.singlearticle-post-comment-area {
+  margin-top: 5%;
+}
+
+.signlearticle-post-comment-wrapper {
+  margin: 3% 0;
+  padding: 0 2%;
+}
+
+.signlearticle-post-comment-header {
+  margin-bottom: 1%;
+}
+
+.signlearticle-post-comment-username {
+  font-weight: 700;
+  color: $brightBlue;
+}
+
+.signlearticle-post-comment-date {
+  color: $lightGrayish;
+}
+
+.custom-error {
+  width: 100%;
+  background-color: $red;
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: 700;
+  color: $white;
+  margin-top: 30px;
+}
+
+.custom-success {
+  width: 100%;
+  background-color: #4bb543;
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: 700;
+  color: $white;
+  margin-top: 30px;
+}
