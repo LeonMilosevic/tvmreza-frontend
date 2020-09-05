@@ -76,6 +76,15 @@ export const articleReadById = (id) => {
   });
 };
 
+export const articleSearchByKeyword = (keyword) => {
+  return fetch(
+    `${process.env.REACT_APP_API_PUBLIC}/article/read/by/${keyword}`,
+    {
+      method: "GET",
+    }
+  );
+};
+
 // Survey read and update
 
 export const surveyReadByTrue = () => {
@@ -134,4 +143,14 @@ export const tvlicaReadAll = () => {
   return fetch(`${process.env.REACT_APP_API_PUBLIC}/tvface/read/all`, {
     method: "GET",
   });
+};
+
+// navpage
+export const navpageOrderedByNavOrder = () => {
+  return fetch(
+    `${process.env.REACT_APP_API_PUBLIC}/navbarpage/read/all/ordered`,
+    {
+      method: "GET",
+    }
+  );
 };

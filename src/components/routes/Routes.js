@@ -48,6 +48,9 @@ import PartneriMain from "../public/pages/static/partneri/PartneriMain";
 import ProgramMain from "../public/pages/static/program/ProgramMain";
 import KontaktMain from "../public/pages/static/kontakt/KontaktMain";
 import LicaMain from "../public/pages/tvlica/LicaMain";
+import LicaSingle from "../public/pages/tvlica/LicaSingle";
+import NavPage from "../public/pages/navbarpage/NavPage";
+import ArticlesByKeyword from "../public/pages/articles/ArticlesByKeyword";
 
 /**
  * Component: Routes
@@ -153,6 +156,7 @@ const Routes = () => {
       <Route exact path="/video/poslednji" component={VideosByLatest} />
       <Route exact path="/vesti/poslednje" component={ArticlesByLatest} />
       <Route exact path="/vest/:name/:id" component={ArticleSingle} />
+      <Route exact path="/vesti/pretraga/:name" component={ArticlesByKeyword} />
       <Route
         exact
         path="/vesti/najpopularnije"
@@ -164,6 +168,8 @@ const Routes = () => {
       <Route exact path="/program/:name" component={ProgramMain} />
       <Route exact path="/kontakt/:name" component={KontaktMain} />
       <Route exact path="/tvlica" component={LicaMain} />
+      <Route exact path="/tvlica/lica/:name" component={LicaSingle} />
+      <Route exact path="/stranica/:name" component={NavPage} />
     </Switch>
   );
 };

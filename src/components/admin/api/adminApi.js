@@ -188,7 +188,7 @@ export const navpageCreate = (page) => {
       navbarName: page.navbarName,
       navbarOrder: page.navbarOrder,
       videoUrl: page.videoUrl,
-      imageUrl: page.imageUrl,
+      imagesUrl: page.imageUrl,
       content: page.content,
       header: page.header,
     }),

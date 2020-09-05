@@ -11,6 +11,7 @@ export const PublicContext = React.createContext();
 
 export const PublicProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
+  const [articlesByKeyword, setArticlesByKeyword] = useState([]);
   const [articlesByLatest, setArticlesByLatest] = useState([]);
   const [articlesMostPopular, setArticlesMostPopular] = useState([]);
   const [articlesLatestOnly8, setArticlesLatestOnly8] = useState([]);
@@ -23,6 +24,7 @@ export const PublicProvider = ({ children }) => {
   const [videosByLatest, setVideosByLatest] = useState([]);
   const [videoByDateOnly8, setVideoByDateOnly8] = useState([]);
   const [survey, setSurvey] = useState({});
+  const [keywordError, setKeywordError] = useState("");
   const [loading, setLoading] = useState(true);
 
   return (
@@ -30,6 +32,8 @@ export const PublicProvider = ({ children }) => {
       value={{
         categories,
         setCategories,
+        articlesByKeyword,
+        setArticlesByKeyword,
         articlesByLatest,
         setArticlesByLatest,
         articlesMostPopular,
@@ -54,6 +58,8 @@ export const PublicProvider = ({ children }) => {
         setVideoByDateOnly8,
         survey,
         setSurvey,
+        keywordError,
+        setKeywordError,
         loading,
         setLoading,
       }}

@@ -47,10 +47,12 @@ const LicaMain = () => {
               </div>
             </div>
             <div className="row">
-              <div className="col s9 m9">
-                {tvlica.map((lica, i) => (
-                  <LicaCard key={i} lica={lica} />
-                ))}
+              <div className="col s9 m9 center">
+                <div className="grid-lica">
+                  {tvlica.map((lica, i) => (
+                    <LicaCard key={i} lica={lica} />
+                  ))}
+                </div>
               </div>
               <div className="col s2 m2 offset-s1 offset-m1">
                 <Sidebanners />

@@ -1,7 +1,7 @@
 import React from "react";
 // import helpers
 import { Link } from "react-router-dom";
-import Logo from "../../../assets/logo.png";
+import Logo from "../../../assets/Logo.svg";
 import { FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const NavMiddle = () => {
@@ -10,7 +10,9 @@ const NavMiddle = () => {
       <div className="container">
         <div className="nav-middle-wrapper">
           <div className="nav-middle-image">
-            <img className="logo-img" src={Logo} alt="tvmreza" />
+            <Link to="/" className="empty-link">
+              <img className="logo-img" src={Logo} alt="tvmreza" />
+            </Link>
           </div>
           <div className="nav-middle-social">
             <div>

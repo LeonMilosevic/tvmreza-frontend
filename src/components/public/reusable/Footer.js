@@ -1,7 +1,8 @@
 import React from "react";
 // import img
-import Logo from "../../../assets/logo.png";
+import Logo from "../../../assets/Logo.svg";
 import { FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -9,9 +10,11 @@ const Footer = () => {
       <div className="container">
         <div className="row">
           <div className="col m3 s6">
-            <img className="logo-img" src={Logo} alt="tvmreza" />
+            <Link className="empty-link" to="/">
+              <img className="logo-img" src={Logo} alt="tvmreza" />
+            </Link>
           </div>
-          <div className="col m3 s6">
+          <div className="col m3 s6 offset-m1">
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus
               soluta, ad laborum ut modi error deleniti eveniet voluptas, natus
@@ -19,7 +22,7 @@ const Footer = () => {
               vero repellendus.
             </p>
           </div>
-          <div className="col m3 s12 offset-m3">
+          <div className="col m2 s12 offset-m3">
             <h5>Kontakt:</h5>
             <div className="valign-wrapper">
               <i className="material-icons tiny">home</i>

@@ -1,7 +1,8 @@
-import React from "react";
-// helpers
-import { useLocation, Redirect } from "react-router-dom";
-// components
+import React, { useContext } from "react";
+// import helpers
+import { PublicContext } from "../../../context/public/PublicContext";
+import { useLocation } from "react-router-dom";
+// import components
 import NavTop from "../../navs/NavTop";
 import NavMiddle from "../../navs/NavMiddle";
 import NavBottom from "../../navs/NavBottom";
@@ -10,10 +11,10 @@ import ArticleCard from "../../reusable/ArticleCard";
 import Footerbanners from "../../reusable/Footerbanners";
 import Footer from "../../reusable/Footer";
 
-const ArticlesByCategory = () => {
+const ArticlesByKeyword = () => {
+  const { keywordError, articlesByKeyword } = useContext(PublicContext);
   const location = useLocation();
-
-  const displayArticlesByCategory = () => (
+  return (
     <>
       <NavTop />
       <NavMiddle />
@@ -22,13 +23,13 @@ const ArticlesByCategory = () => {
         <div className="row margin-top2">
           <div className="col s9 m9">
             <div className="video-display-header">
-              {location.category.categoryName}
+              {keywordError ? keywordError : location.pathname.split("/").pop()}
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col s9 m9">
-            {location.category.articles.map((article, i) => (
+            {articlesByKeyword.map((article, i) => (
               <ArticleCard key={i} article={article} />
             ))}
           </div>
@@ -41,16 +42,6 @@ const ArticlesByCategory = () => {
       <Footer />
     </>
   );
-
-  return (
-    <>
-      {location.category === undefined ? (
-        <Redirect to="/" />
-      ) : (
-        displayArticlesByCategory()
-      )}
-    </>
-  );
 };
 
-export default ArticlesByCategory;
+export default ArticlesByKeyword;
