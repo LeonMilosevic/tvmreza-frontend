@@ -134,6 +134,9 @@ const NavTop = () => {
             </li>
             <li className="divider" tabIndex="-1"></li>
           </ul>
+          <Link to="/sporazum/poslednje" className="nav-top-link">
+            Sporazum
+          </Link>
           <Link
             to="!#"
             className="dropdown-trigger nav-top-link"

@@ -16,6 +16,10 @@ export const PublicProvider = ({ children }) => {
   const [articlesMostPopular, setArticlesMostPopular] = useState([]);
   const [articlesLatestOnly8, setArticlesLatestOnly8] = useState([]);
   const [articlesMostPopularOnly8, setArticlesMostPopularOnly8] = useState([]);
+  const [
+    articlesByCategorySlicedHome,
+    setArticlesByCategorySlicedHome,
+  ] = useState([]);
   const [sideBanners, setSideBanners] = useState([]);
   const [footerBanners, setFooterBanners] = useState([]);
   const [navPages, setNavPages] = useState([]);
@@ -25,13 +29,20 @@ export const PublicProvider = ({ children }) => {
   const [videoByDateOnly8, setVideoByDateOnly8] = useState([]);
   const [survey, setSurvey] = useState({});
   const [keywordError, setKeywordError] = useState("");
+  // loaders
   const [loading, setLoading] = useState(true);
-
+  const [homeLoaded, setHomeLoaded] = useState(false);
+  const [
+    homeArticlesByCategoryLoaded,
+    setHomeArticlesByCategoryLoaded,
+  ] = useState(false);
   return (
     <PublicContext.Provider
       value={{
         categories,
         setCategories,
+        articlesByCategorySlicedHome,
+        setArticlesByCategorySlicedHome,
         articlesByKeyword,
         setArticlesByKeyword,
         articlesByLatest,
@@ -62,6 +73,10 @@ export const PublicProvider = ({ children }) => {
         setKeywordError,
         loading,
         setLoading,
+        homeLoaded,
+        setHomeLoaded,
+        homeArticlesByCategoryLoaded,
+        setHomeArticlesByCategoryLoaded,
       }}
     >
       {children}

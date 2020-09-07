@@ -4,7 +4,6 @@ import ReactPlayer from "react-player/youtube";
 import parse from "html-react-parser";
 
 const VideoCard = (props) => {
-  console.log(props.video);
   return (
     <div className="videopage-card">
       <div className="videopage-card-videowrapper">

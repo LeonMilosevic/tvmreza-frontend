@@ -14,16 +14,17 @@ import Footer from "../../reusable/Footer";
 
 const SporazumByLatest = () => {
   const [loading, setLoading] = useState(true);
+  const [pageNumber, setPageNumber] = useState(0);
   const { sporazum, setSporazum } = useContext(PublicContext);
-
   useEffect(() => {
-    sporazumReadAllOrdedred()
+    sporazumReadAllOrdedred(pageNumber, 5)
       .then((response) => response.json())
       .then((responseJson) => {
         setSporazum(responseJson);
         setLoading(false);
       })
       .catch((error) => console.log(error));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setSporazum]);
 
   const displaySporazumByLatest = () => (
@@ -38,7 +39,9 @@ const SporazumByLatest = () => {
           <div className="container">
             <div className="row margin-top2">
               <div className="col s9 m9">
-                <div className="video-display-header">Poslednji video</div>
+                <div className="video-display-header">
+                  Poslednji Sporazum Video
+                </div>
               </div>
             </div>
             <div className="row">

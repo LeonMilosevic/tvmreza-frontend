@@ -4,20 +4,17 @@
  */
 
 // video section get
-export const videosectionReadAllByDateOnly6 = () => {
-  return fetch(`${process.env.REACT_APP_API_PUBLIC}/video/read/all/ordered/6`, {
-    method: "GET",
-  });
-};
-
-export const videosectionReadAllByDate = () => {
-  return fetch(`${process.env.REACT_APP_API_PUBLIC}/video/read/all/ordered`, {
-    method: "GET",
-  });
+export const videosectionReadAllByDatePaginated = (pageNumber, pageSize) => {
+  return fetch(
+    `${process.env.REACT_APP_API_PUBLIC}/video/read/all/ordered?pageNumber=${pageNumber}&pageSize=${pageSize}`,
+    {
+      method: "GET",
+    }
+  );
 };
 
 // categories get
-export const categoriesReadAllByDate = () => {
+export const categoriesReadAllByOrdered = () => {
   return fetch(
     `${process.env.REACT_APP_API_PUBLIC}/category/read/all/ordered`,
     {
@@ -37,33 +34,18 @@ export const sidebannersReadAllOrdered = () => {
 };
 
 // articles read
-export const articlesReadOrderedOnly8 = () => {
+export const articlesReadOrderedByDate = (pageNumber, pageSize) => {
   return fetch(
-    `${process.env.REACT_APP_API_PUBLIC}/article/read/all/ordered/8`,
+    `${process.env.REACT_APP_API_PUBLIC}/article/read/all/newest?pageNumber=${pageNumber}&pageSize=${pageSize}`,
     {
       method: "GET",
     }
   );
 };
 
-export const articlesReadOrderedByDate = () => {
-  return fetch(`${process.env.REACT_APP_API_PUBLIC}/article/read/all/newest`, {
-    method: "GET",
-  });
-};
-
-export const articlesReadOrderedByMostViewedOnly8 = () => {
+export const articlesReadOrderedByMostViewed = (pageNumber, pageSize) => {
   return fetch(
-    `${process.env.REACT_APP_API_PUBLIC}/article/read/all/mostviewed/8`,
-    {
-      method: "GET",
-    }
-  );
-};
-
-export const articlesReadOrderedByMostViewed = () => {
-  return fetch(
-    `${process.env.REACT_APP_API_PUBLIC}/article/read/all/mostviewed`,
+    `${process.env.REACT_APP_API_PUBLIC}/article/read/all/mostviewed?pageNumber=${pageNumber}&pageSize=${pageSize}`,
     {
       method: "GET",
     }
@@ -79,6 +61,24 @@ export const articleReadById = (id) => {
 export const articleSearchByKeyword = (keyword) => {
   return fetch(
     `${process.env.REACT_APP_API_PUBLIC}/article/read/by/${keyword}`,
+    {
+      method: "GET",
+    }
+  );
+};
+
+export const articleReadByCategorySliced = (id) => {
+  return fetch(
+    `${process.env.REACT_APP_API_PUBLIC}/category/read/articles/sliced/${id}`,
+    {
+      method: "GET",
+    }
+  );
+};
+
+export const articleReadByCategory = (id, pageNumber, pageSize) => {
+  return fetch(
+    `${process.env.REACT_APP_API_PUBLIC}/category/read/articles/${id}?pageNumber=${pageNumber}&pageSize=${pageSize}`,
     {
       method: "GET",
     }
@@ -113,9 +113,9 @@ export const footerBannerReadByOrder = () => {
 };
 
 // sporazum
-export const sporazumReadAllOrdedred = () => {
+export const sporazumReadAllOrdedred = (pageNumber, pageSize) => {
   return fetch(
-    `${process.env.REACT_APP_API_PUBLIC}/sporazum/read/all/ordered`,
+    `${process.env.REACT_APP_API_PUBLIC}/sporazum/read/all/ordered?pageNumber=${pageNumber}&pageSize=${pageSize}`,
     {
       method: "GET",
     }
