@@ -36,7 +36,7 @@ const OnamaMain = () => {
         <div className="row">
           <div className="col s9 m9">
             <div className="logo-bg">
-              <img src={Logo} alt="logo" />
+              <img className="static-image" src={Logo} alt="logo" />
             </div>
             <p className="onama-paragraph">{content.paragraph1}</p>
             <p className="onama-paragraph2">

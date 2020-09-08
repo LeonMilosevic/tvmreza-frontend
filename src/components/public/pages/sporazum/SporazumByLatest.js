@@ -93,7 +93,7 @@ const SporazumByLatest = () => {
                       className="load-more-btn"
                       onClick={handleClickLoadMore}
                     >
-                      Load more
+                      Ucitaj još
                     </button>
                   </div>
                 ) : (

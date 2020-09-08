@@ -37,7 +37,7 @@ const PartneriMain = () => {
         <div className="row">
           <div className="col s9 m9">
             <div className="partneri-image">
-              <img src={content.image} alt="logo" />
+              <img className="static-image" src={content.image} alt="logo" />
             </div>
             {content.sediste && (
               <div className="partneri-div-li">

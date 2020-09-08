@@ -86,7 +86,7 @@ const Home = () => {
           <NavTop />
           <NavMiddle />
           <NavBottom />
-          <div className="container">
+          <div className="container home-grid-container">
             <div className="home-grid">
               <Videos />
               <Sidebanners />

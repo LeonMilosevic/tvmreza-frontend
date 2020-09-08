@@ -9,6 +9,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
+  @media (max-width: $screen-max-phone) {
+    justify-content: center;
+    width: 100% !important;
+  }
 }
 
 .nav-top-link-first {
@@ -18,6 +23,16 @@
   &:hover {
     color: $linksInputs;
     transition: 0.2s;
+  }
+  @media (max-width: $screen-max-tablet) {
+    margin: 0 5px;
+    padding: 0 5px;
+    font-size: 10px;
+  }
+  @media (max-width: $screen-max-phone) {
+    margin: 0 2px;
+    padding: 0 2px;
+    font-size: 10px;
   }
 }
 
@@ -29,6 +44,34 @@
     color: $linksInputs;
     transition: 0.2s;
   }
+  @media (max-width: $screen-max-tablet) {
+    margin: 0 5px;
+    padding: 0 5px;
+    font-size: 10px;
+  }
+  @media (max-width: $screen-max-phone) {
+    margin: 0 2px;
+    padding: 0 2px;
+    font-size: 10px;
+  }
+}
+
+.nav-content-left {
+  @media (max-width: $screen-max-tablet) {
+    width: 100%;
+  }
+  @media (max-width: $screen-max-phone) {
+    width: 100%;
+  }
+}
+
+.nav-content-right {
+  @media (max-width: $screen-max-tablet) {
+    display: none;
+  }
+  @media (max-width: $screen-max-phone) {
+    display: none;
+  }
 }
 
 /* nav middle  */
@@ -37,17 +80,26 @@
   background-color: $lightGrayish;
   width: 100%;
   height: 100px;
+  @media (max-width: $screen-max-phone) {
+    height: 70px;
+  }
 }
 
 .nav-middle-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: $screen-max-phone) {
+    justify-content: flex-start;
+  }
 }
 
 .logo-img {
   width: 100%;
-  height: 100px;
+  height: 100%;
+  @media (max-width: $screen-max-phone) {
+    height: 70px;
+  }
 }
 
 .nav-btn {
@@ -59,6 +111,12 @@
   align-items: center;
   justify-content: space-between;
   width: 25%;
+  @media (max-width: $screen-max-tablet) {
+    width: 40%;
+  }
+  @media (max-width: $screen-max-phone) {
+    display: none;
+  }
 }
 
 .nav-icon-color {
@@ -83,18 +141,40 @@
   align-items: center;
   justify-content: flex-start;
   height: 100%;
+  @media (max-width: $screen-max-tablet) {
+    width: 100% !important;
+  }
+  @media (max-width: $screen-max-phone) {
+    width: 100% !important;
+  }
 }
 .nav-bottom-link-first {
   margin-right: 10px;
   padding-right: 10px;
   color: $white;
   font-weight: 700;
+  @media (max-width: $screen-max-tablet) {
+    margin-right: 5px;
+    font-size: 12px;
+  }
+  @media (max-width: $screen-max-phone) {
+    margin-right: 2px;
+    font-size: 10px;
+  }
 }
 .nav-bottom-link {
   margin: 0 10px;
   padding: 0 10px;
   color: $white;
   font-weight: 700;
+  @media (max-width: $screen-max-tablet) {
+    margin: 0 5px;
+    font-size: 12px;
+  }
+  @media (max-width: $screen-max-phone) {
+    margin: 0 2px;
+    font-size: 10px;
+  }
 }
 
 .nav-active {

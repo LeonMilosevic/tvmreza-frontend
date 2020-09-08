@@ -8,6 +8,9 @@
   padding-bottom: 10px;
   margin: 10px 0;
   border-bottom: 1px solid $lightGrayish;
+  @media (max-width: $screen-max-phone) {
+    height: 100px;
+  }
 }
 
 .videopage-card-videowrapper {
@@ -28,10 +31,16 @@
   color: $red;
   font-weight: 700;
   font-size: 16px;
+  @media (max-width: $screen-max-phone) {
+    font-size: 10px;
+  }
 }
 
 .videopage-card-content {
   color: $darkGray;
+  @media (max-width: $screen-max-phone) {
+    font-size: 8px;
+  }
 }
 
 .videopage-card-subcontent {
@@ -39,6 +48,9 @@
   justify-content: space-between;
   color: $lightGrayish;
   font-weight: 700;
+  @media (max-width: $screen-max-phone) {
+    font-size: 6px;
+  }
   &-text {
     color: $darkBlue;
     font-weight: 400;
@@ -55,6 +67,10 @@
   transition: 0.1s linear all;
   &:active {
     background-color: #113888;
+  }
+  @media (max-width: $screen-max-phone) {
+    padding: 5px 10px;
+    font-size: 10px;
   }
 }
 

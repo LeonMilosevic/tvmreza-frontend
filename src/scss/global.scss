@@ -14,6 +14,13 @@
   background-color: $lightGrayish;
 }
 
+/* override dropdown */
+
+.dropdown-content li > a,
+.dropdown-content li > span {
+  color: $darkGray !important;
+}
+
 /* override container */
 .container {
   width: 90% !important;

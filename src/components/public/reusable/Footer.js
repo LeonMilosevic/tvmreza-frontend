@@ -9,12 +9,12 @@ const Footer = () => {
     <footer className="page-footer">
       <div className="container">
         <div className="row">
-          <div className="col m3 s6">
+          <div className="col m3 s5">
             <Link className="empty-link" to="/">
               <img className="logo-img" src={Logo} alt="tvmreza" />
             </Link>
           </div>
-          <div className="col m3 s6 offset-m1">
+          <div className="col m3 s6 offset-m1 footer-text">
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus
               soluta, ad laborum ut modi error deleniti eveniet voluptas, natus
@@ -22,7 +22,7 @@ const Footer = () => {
               vero repellendus.
             </p>
           </div>
-          <div className="col m2 s12 offset-m3">
+          <div className="col m2 s6 offset-m3 offset-s1">
             <h5>Kontakt:</h5>
             <div className="valign-wrapper">
               <i className="material-icons tiny">home</i>
