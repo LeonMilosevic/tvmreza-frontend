@@ -44,3 +44,22 @@
     font-weight: 400;
   }
 }
+
+.load-more-btn {
+  background-color: #113888;
+  color: #ffffff;
+  border: 1px solid #113888;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.1s linear all;
+  &:active {
+    background-color: #113888;
+  }
+}
+
+.load-more-btn-wrapper {
+  width: 100%;
+  text-align: center;
+  margin: 40px 0;
+}

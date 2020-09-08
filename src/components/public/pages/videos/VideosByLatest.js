@@ -13,37 +13,60 @@ import Footer from "../../reusable/Footer";
 
 const VideosByLatest = () => {
   const [loading, setLoading] = useState(true);
-  const [pageNumber, setPageNumber] = useState(0);
-  const [pageSize, setPageSize] = useState(5);
-  const { videosByLatest, setVideosByLatest } = useContext(PublicContext);
+  const [secondEffectMayBeCalled, setSecondEffectMayBeCalled] = useState(false);
+  const {
+    videosByLatest,
+    setVideosByLatest,
+    pageNumberVideosByLatest,
+    setPageNumberVideosByLatest,
+    pageSizeVideosByLatest,
+    setPageSizeVideosByLatest,
+  } = useContext(PublicContext);
 
   useEffect(() => {
-    videosectionReadAllByDatePaginated(pageNumber, pageSize)
-      .then((response) => response.json())
-      .then((responseJson) => {
-        if (responseJson.length < 5) {
-          setPageSize(0);
-        }
-        setLoading(false);
-        setVideosByLatest(responseJson);
-      })
-      .catch((error) => console.log(error));
+    if (videosByLatest.length === 0) {
+      videosectionReadAllByDatePaginated(
+        pageNumberVideosByLatest,
+        pageSizeVideosByLatest
+      )
+        .then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson.length < 5) {
+            setPageSizeVideosByLatest(0);
+          }
+          setLoading(false);
+          setVideosByLatest(responseJson);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      setLoading(false);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (videosByLatest.length !== 0 && secondEffectMayBeCalled) {
+      videosectionReadAllByDatePaginated(
+        pageNumberVideosByLatest,
+        pageSizeVideosByLatest
+      )
+        .then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson.length < 5) {
+            setPageSizeVideosByLatest(0);
+          }
+          setVideosByLatest([...videosByLatest, ...responseJson]);
+          setLoading(false);
+          setSecondEffectMayBeCalled(false);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [pageNumberVideosByLatest]);
+
   const handleClickLoadMore = () => {
     setLoading(true);
-    setPageNumber((prevPageNumber) => prevPageNumber + 1);
-    videosectionReadAllByDatePaginated(pageNumber, pageSize)
-      .then((response) => response.json())
-      .then((responseJson) => {
-        if (responseJson.length < 5) {
-          setPageSize(0);
-        }
-        setVideosByLatest([...videosByLatest, ...responseJson]);
-        setLoading(false);
-      })
-      .catch((error) => console.log(error));
+    setSecondEffectMayBeCalled(true);
+    setPageNumberVideosByLatest((prevPageNumber) => prevPageNumber + 1);
   };
 
   const displayVideosByLatest = () => (
@@ -63,12 +86,20 @@ const VideosByLatest = () => {
             </div>
             <div className="row">
               <div className="col s9 m9">
-                {/* {videosByLatest &&
+                {videosByLatest &&
                   videosByLatest.map((video, i) => {
                     return <VideoCard key={i} video={video} />;
-                  })} */}
-                {pageSize !== 0 ? (
-                  <button onClick={handleClickLoadMore}>Load more</button>
+                  })}
+                {pageSizeVideosByLatest !== 0 ? (
+                  <div className="load-more-btn-wrapper">
+                    {" "}
+                    <button
+                      className="load-more-btn"
+                      onClick={handleClickLoadMore}
+                    >
+                      Load more
+                    </button>
+                  </div>
                 ) : (
                   ""
                 )}

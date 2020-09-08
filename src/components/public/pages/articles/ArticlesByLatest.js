@@ -14,17 +14,62 @@ import Footer from "../../reusable/Footer";
 
 const ArticlesByLatest = () => {
   const [loading, setLoading] = useState(true);
-  const { articlesByLatest, setArticlesByLatest } = useContext(PublicContext);
+  const [secondEffectMayBeCalled, setSecondEffectMayBeCalled] = useState(false);
+  const {
+    articlesByLatest,
+    setArticlesByLatest,
+    pageNumberArticlesByLatest,
+    setPageNumberArticlesByLatest,
+    pageSizeArticlesByLatest,
+    setPageSizeArticlesByLatest,
+  } = useContext(PublicContext);
 
   useEffect(() => {
-    articlesReadOrderedByDate()
-      .then((response) => response.json())
-      .then((responseJson) => {
-        setArticlesByLatest(responseJson);
-        setLoading(false);
-      })
-      .catch((error) => console.log(error));
-  }, [setArticlesByLatest]);
+    if (articlesByLatest.length === 0) {
+      articlesReadOrderedByDate(
+        pageNumberArticlesByLatest,
+        pageSizeArticlesByLatest
+      )
+        .then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson.length < 5) {
+            setPageSizeArticlesByLatest(0);
+          }
+          setLoading(false);
+          setArticlesByLatest(responseJson);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      setLoading(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (articlesByLatest.length !== 0 && secondEffectMayBeCalled) {
+      articlesReadOrderedByDate(
+        pageNumberArticlesByLatest,
+        pageSizeArticlesByLatest
+      )
+        .then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson.length < 5) {
+            setPageSizeArticlesByLatest(0);
+          }
+          setArticlesByLatest([...articlesByLatest, ...responseJson]);
+          setLoading(false);
+          setSecondEffectMayBeCalled(false);
+        })
+        .catch((error) => console.log(error));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumberArticlesByLatest]);
+
+  const handleClickLoadMore = () => {
+    setLoading(true);
+    setSecondEffectMayBeCalled(true);
+    setPageNumberArticlesByLatest((prevPageNumber) => prevPageNumber + 1);
+  };
 
   const displayArticlesByLatest = () => (
     <>
@@ -46,6 +91,18 @@ const ArticlesByLatest = () => {
                 {articlesByLatest.map((article, i) => (
                   <ArticleCard key={i} article={article} />
                 ))}
+                {pageSizeArticlesByLatest !== 0 ? (
+                  <div className="load-more-btn-wrapper">
+                    <button
+                      className="load-more-btn"
+                      onClick={handleClickLoadMore}
+                    >
+                      Load more
+                    </button>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
               <div className="col s2 m2 offset-s1 offset-m1">
                 <Sidebanners />

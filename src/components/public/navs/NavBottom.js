@@ -17,7 +17,7 @@ const NavBottom = () => {
               key={i}
               to={{
                 pathname: `/kategorija/${category.categoryName}`,
-                category,
+                state: category,
               }}
               className="nav-bottom-link"
             >

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 // import helpers
-import { articlesReadOrderedByDate } from "../../api/publicApi";
+import { articlesReadOrderedByMostViewed } from "../../api/publicApi";
 import { PublicContext } from "../../../context/public/PublicContext";
 // import components
 import Sidebanners from "../../reusable/Sidebanners";
@@ -14,19 +14,62 @@ import Footer from "../../reusable/Footer";
 
 const ArticlesByMostViewed = () => {
   const [loading, setLoading] = useState(true);
-  const { articlesMostPopular, setArticlesMostPopular } = useContext(
-    PublicContext
-  );
+  const [secondEffectMayBeCalled, setSecondEffectMayBeCalled] = useState(false);
+  const {
+    articlesByMostPopular,
+    setArticlesByMostPopular,
+    pageNumberArticlesByMostPopular,
+    setPageNumberArticlesByMostPopular,
+    pageSizeArticlesByMostPopular,
+    setPageSizeArticlesByMostPopular,
+  } = useContext(PublicContext);
 
   useEffect(() => {
-    articlesReadOrderedByDate()
-      .then((response) => response.json())
-      .then((responseJson) => {
-        setArticlesMostPopular(responseJson);
-        setLoading(false);
-      })
-      .catch((error) => console.log(error));
-  }, [setArticlesMostPopular]);
+    if (articlesByMostPopular.length === 0) {
+      articlesReadOrderedByMostViewed(
+        pageNumberArticlesByMostPopular,
+        pageSizeArticlesByMostPopular
+      )
+        .then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson.length < 5) {
+            setPageSizeArticlesByMostPopular(0);
+          }
+          setLoading(false);
+          setArticlesByMostPopular(responseJson);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      setLoading(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (articlesByMostPopular.length !== 0 && secondEffectMayBeCalled) {
+      articlesReadOrderedByMostViewed(
+        pageNumberArticlesByMostPopular,
+        pageSizeArticlesByMostPopular
+      )
+        .then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson.length < 5) {
+            setPageSizeArticlesByMostPopular(0);
+          }
+          setArticlesByMostPopular([...articlesByMostPopular, ...responseJson]);
+          setLoading(false);
+          setSecondEffectMayBeCalled(false);
+        })
+        .catch((error) => console.log(error));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumberArticlesByMostPopular]);
+
+  const handleClickLoadMore = () => {
+    setLoading(true);
+    setSecondEffectMayBeCalled(true);
+    setPageNumberArticlesByMostPopular((prevPageNumber) => prevPageNumber + 1);
+  };
 
   const displayArticlesByMostViewed = () => (
     <>
@@ -45,9 +88,21 @@ const ArticlesByMostViewed = () => {
             </div>
             <div className="row">
               <div className="col s9 m9">
-                {articlesMostPopular.map((article, i) => (
+                {articlesByMostPopular.map((article, i) => (
                   <ArticleCard key={i} article={article} />
                 ))}
+                {pageSizeArticlesByMostPopular !== 0 ? (
+                  <div className="load-more-btn-wrapper">
+                    <button
+                      className="load-more-btn"
+                      onClick={handleClickLoadMore}
+                    >
+                      Load more
+                    </button>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
               <div className="col s2 m2 offset-s1 offset-m1">
                 <Sidebanners />

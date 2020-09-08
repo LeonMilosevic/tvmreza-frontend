@@ -70,7 +70,6 @@ const Home = () => {
           setFooterBanners(responseJson[6]);
           setLoading(false);
           setHomeLoaded(true);
-          console.log("called");
         });
       } catch (error) {
         console.log(error);

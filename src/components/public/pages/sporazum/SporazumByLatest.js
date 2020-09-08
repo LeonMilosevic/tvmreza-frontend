@@ -14,18 +14,56 @@ import Footer from "../../reusable/Footer";
 
 const SporazumByLatest = () => {
   const [loading, setLoading] = useState(true);
-  const [pageNumber, setPageNumber] = useState(0);
-  const { sporazum, setSporazum } = useContext(PublicContext);
+  const [secondEffectMayBeCalled, setSecondEffectMayBeCalled] = useState(false);
+  const {
+    sporazum,
+    setSporazum,
+    pageNumberSporazum,
+    setPageNumberSporazum,
+    pageSizeSporazum,
+    setPageSizeSporazum,
+  } = useContext(PublicContext);
+
   useEffect(() => {
-    sporazumReadAllOrdedred(pageNumber, 5)
-      .then((response) => response.json())
-      .then((responseJson) => {
-        setSporazum(responseJson);
-        setLoading(false);
-      })
-      .catch((error) => console.log(error));
+    if (sporazum.length === 0) {
+      sporazumReadAllOrdedred(pageNumberSporazum, pageSizeSporazum)
+        .then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson.length < 5) {
+            setPageSizeSporazum(0);
+          }
+          setLoading(false);
+          setSporazum(responseJson);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      setLoading(false);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setSporazum]);
+  }, []);
+
+  useEffect(() => {
+    if (sporazum.length !== 0 && secondEffectMayBeCalled) {
+      sporazumReadAllOrdedred(pageNumberSporazum, pageSizeSporazum)
+        .then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson.length < 5) {
+            setPageSizeSporazum(0);
+          }
+          setSporazum([...sporazum, ...responseJson]);
+          setLoading(false);
+          setSecondEffectMayBeCalled(false);
+        })
+        .catch((error) => console.log(error));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumberSporazum]);
+
+  const handleClickLoadMore = () => {
+    setLoading(true);
+    setSecondEffectMayBeCalled(true);
+    setPageNumberSporazum((prevPageNumber) => prevPageNumber + 1);
+  };
 
   const displaySporazumByLatest = () => (
     <>
@@ -49,6 +87,18 @@ const SporazumByLatest = () => {
                 {sporazum.map((video, i) => (
                   <VideoCard key={i} video={video} />
                 ))}
+                {pageSizeSporazum !== 0 ? (
+                  <div className="load-more-btn-wrapper">
+                    <button
+                      className="load-more-btn"
+                      onClick={handleClickLoadMore}
+                    >
+                      Load more
+                    </button>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
               <div className="col s2 m2 offset-s1 offset-m1">
                 <Sidebanners />

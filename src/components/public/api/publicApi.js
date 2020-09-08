@@ -78,7 +78,7 @@ export const articleReadByCategorySliced = (id) => {
 
 export const articleReadByCategory = (id, pageNumber, pageSize) => {
   return fetch(
-    `${process.env.REACT_APP_API_PUBLIC}/category/read/articles/${id}?pageNumber=${pageNumber}&pageSize=${pageSize}`,
+    `${process.env.REACT_APP_API_PUBLIC}/article/read/by/category/${id}?pageNumber=${pageNumber}&pageSize=${pageSize}`,
     {
       method: "GET",
     }

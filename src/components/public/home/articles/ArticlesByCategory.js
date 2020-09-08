@@ -18,7 +18,6 @@ const ArticlesByCategory = () => {
       articleReadByCategorySliced(categories[3].id)
         .then((response) => response.json())
         .then((responseJson) => {
-          console.log("called");
           setArticlesByCategorySlicedHome(responseJson);
           setHomeArticlesByCategoryLoaded(true);
         })
