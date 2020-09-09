@@ -16,6 +16,12 @@ import Footer from "../../reusable/Footer";
 import Footerbanners from "../../reusable/Footerbanners";
 import SpinnerCircle from "../../ui/SpinnerCircle";
 
+/**
+ * ArticlesSingle: Used to display article. We are making a call to the server api, as soon as component is load with the id that is passed from the location function.
+ *
+ * We are also having a create a post functionality, to create and read comments for a certain article.
+ *
+ */
 const ArticleSingle = () => {
   const [article, setArticle] = useState({});
   const [post, setPost] = useState({

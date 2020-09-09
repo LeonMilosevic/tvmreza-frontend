@@ -11,7 +11,12 @@ import Sidebanners from "../../reusable/Sidebanners";
 import VideoCard from "../../reusable/VideoCard";
 import Footerbanners from "../../reusable/Footerbanners";
 import Footer from "../../reusable/Footer";
-
+/**
+ * SporazumByLatest,
+ *
+ * same functionality as ArticlesByMostViewed
+ *
+ */
 const SporazumByLatest = () => {
   const [loading, setLoading] = useState(true);
   const [secondEffectMayBeCalled, setSecondEffectMayBeCalled] = useState(false);

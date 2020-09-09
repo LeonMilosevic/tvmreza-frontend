@@ -5,6 +5,11 @@ import {
   calculatePercentage,
 } from "../../../utils/PercentageCalculator";
 
+/**
+ * SurveyResults, we use utils helpers to calculate the percentage of votes per answer from the database
+ * and we populate the table and display the results for the users.
+ *
+ */
 const SurveyResults = (props) => {
   const [totalVotes, setTotalVotes] = useState(null);
   const [answerOnePercentage, setAnswerOnePercentage] = useState(null);

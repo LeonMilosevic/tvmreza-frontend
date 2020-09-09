@@ -10,7 +10,12 @@ import Sidebanners from "../../reusable/Sidebanners";
 import VideoCard from "../../reusable/VideoCard";
 import Footerbanners from "../../reusable/Footerbanners";
 import Footer from "../../reusable/Footer";
-
+/**
+ * VideosByLatest,
+ *
+ * same functionality as ArticlesByMostViewed
+ *
+ */
 const VideosByLatest = () => {
   const [loading, setLoading] = useState(true);
   const [secondEffectMayBeCalled, setSecondEffectMayBeCalled] = useState(false);

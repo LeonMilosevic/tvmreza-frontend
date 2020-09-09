@@ -25,6 +25,11 @@ import ArticlesByCategory from "./articles/ArticlesByCategory";
 import Footerbanners from "../reusable/Footerbanners";
 import Footer from "../reusable/Footer";
 
+/**
+ * Home component, as soon as the client comes to the page, we make calls to the server,
+ * populate states from the public context, we do it in the public context in order to avoid calls to the server everytime
+ * the user comes back to the homepage. Then we fill the home page with other components.
+ */
 const Home = () => {
   const {
     setVideoByDateOnly8,

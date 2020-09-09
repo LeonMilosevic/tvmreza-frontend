@@ -11,7 +11,18 @@ import NavMiddle from "../../navs/NavMiddle";
 import NavBottom from "../../navs/NavBottom";
 import Footerbanners from "../../reusable/Footerbanners";
 import Footer from "../../reusable/Footer";
-
+/**
+ * ArticlesByLatest,
+ * See articlesByCategory in same folder for detailed explanation how component works, its similiar funcionality.
+ *
+ * I will describe here only the small difference:
+ * Here we are using the state from public context, so if the user re-visits the page, we dont have to make a query call to the server.
+ * And we are also passing pageNumber from the public context, so the user can continue to load more where he left off while on the same session.
+ *
+ * secondEffectMayBeCalled state is used to control the useEffect hook to trigger only when we allow it. We want it to be enabled only once the user clicks load more, so we dont call it as soon as a user comes to this component.
+ *
+ *
+ */
 const ArticlesByLatest = () => {
   const [loading, setLoading] = useState(true);
   const [secondEffectMayBeCalled, setSecondEffectMayBeCalled] = useState(false);

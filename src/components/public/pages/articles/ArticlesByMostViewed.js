@@ -12,6 +12,11 @@ import NavBottom from "../../navs/NavBottom";
 import Footerbanners from "../../reusable/Footerbanners";
 import Footer from "../../reusable/Footer";
 
+/**
+ * ArticlesByMostViewed,
+ * For further reading please check ArticlesByLatest in the same floder.
+ *
+ */
 const ArticlesByMostViewed = () => {
   const [loading, setLoading] = useState(true);
   const [secondEffectMayBeCalled, setSecondEffectMayBeCalled] = useState(false);

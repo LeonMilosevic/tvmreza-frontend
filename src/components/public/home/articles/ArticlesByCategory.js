@@ -4,6 +4,14 @@ import ArticleCardCategory from "./ArticleCardCategory";
 // import helpers
 import { PublicContext } from "../../../context/public/PublicContext";
 import { articleReadByCategorySliced } from "../../api/publicApi";
+
+/**
+ * ArticlesByCategory
+ * we make the api call to the server to retrieve articles from a passed category,
+ * and we use it to populate the state in public context
+ * we use sliced version in order to only send 4 articles from server to the client.
+ *
+ */
 const ArticlesByCategory = () => {
   const {
     categories,

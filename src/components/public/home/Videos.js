@@ -6,6 +6,11 @@ import { Link } from "react-router-dom";
 
 import { PublicContext } from "../../context/public/PublicContext";
 
+/**
+ * Videos home component, on mount, we set the main video to be displayed. On a side videos click, we change the state to display the video clicked.
+ * Side videos are only images pulled from youtube thumbnails.
+ *
+ */
 const Videos = () => {
   const [mainVideoUrl, setMainVideoUrl] = useState("");
 

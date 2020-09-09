@@ -2,6 +2,13 @@ import React from "react";
 // import helpers
 import { Link } from "react-router-dom";
 
+/**
+ * ArticleCardCategory component,
+ *
+ * to display latest articles from a category on the homepage.
+ *
+ *
+ */
 const ArticleCardCategory = (props) => {
   return (
     <div className="card custom-card">
@@ -15,7 +22,13 @@ const ArticleCardCategory = (props) => {
         <p>{props.article.header}</p>
       </div>
       <div className="card-action">
-        <Link to="/">Detaljnije</Link>
+        <Link
+          to={{
+            pathname: `/vest/${props.article.header}/${props.article.id}`,
+          }}
+        >
+          Detaljnije
+        </Link>
       </div>
     </div>
   );

@@ -1,0 +1,4 @@
+Explanation: 
+
+Each page has its own data, and components are displayed based on the data that is pulled from a file in the same folder.
+To add more pages in the future, just update the data files.
