@@ -16,17 +16,29 @@ const NavMiddle = () => {
           </div>
           <div className="nav-middle-social">
             <div>
-              <a target="_blank" href="/">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.facebook.com/NezavisnaTvMreza/"
+              >
                 <FaFacebookF className="nav-icon-color-f" />
               </a>
             </div>
             <div>
-              <a target="_blank" href="/">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://twitter.com/NezavisnaTVMrea"
+              >
                 <FaTwitter className="nav-icon-color-f" />
               </a>
             </div>
             <div>
-              <a target="_blank" href="/">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.youtube.com/channel/UCBhi5RNBF78DhCxebCc5NIg"
+              >
                 <FaYoutube className="nav-icon-color-f" />
               </a>
             </div>

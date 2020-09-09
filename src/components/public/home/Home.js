@@ -91,7 +91,7 @@ const Home = () => {
           <NavTop />
           <NavMiddle />
           <NavBottom />
-          <div className="container home-grid-container">
+          <main className="container home-grid-container">
             <div className="home-grid">
               <Videos />
               <Sidebanners />
@@ -101,7 +101,7 @@ const Home = () => {
             </div>
             <ArticlesByCategory />
             <Footerbanners />
-          </div>
+          </main>
           <Footer />
         </>
       )}

@@ -5,6 +5,7 @@ import {
   saveTokenToLocalStorage,
   saveUserToLocalStorage,
 } from "../../auth/auth";
+import { Link } from "react-router-dom";
 
 /**
  * Component: AdminLogin
@@ -17,8 +18,8 @@ const AdminLogin = () => {
     username: "Administrator",
     password: "XeGyZp2UyCsOw4z5suKJh7TiFl2Bc2zr",
   });
-  const [error, setError] = React.useState(null);
-
+  const [message, setMessage] = React.useState(null);
+  const [success, setSuccess] = React.useState(false);
   const handleChangeLoginDetails = (name) => (e) => {
     setLoginDetails({ ...loginDetails, [name]: e.target.value });
   };
@@ -29,19 +30,28 @@ const AdminLogin = () => {
   const handleSubmitLoginForm = () => {
     loginUser(loginDetails.username, loginDetails.password)
       .then((response) => {
-        saveTokenToLocalStorage(response.headers.get("Jwt-Token"));
-        return response.json();
+        if (response.ok !== true) {
+          return setMessage("Wrong credentials");
+        } else {
+          saveTokenToLocalStorage(response.headers.get("Jwt-Token"));
+          return response.json();
+        }
       })
       .then((responseJson) => {
-        saveUserToLocalStorage(responseJson);
+        if (responseJson.ok === false) {
+          return setMessage("Wrong credentials");
+        } else {
+          saveUserToLocalStorage(responseJson);
+          return setSuccess(true);
+        }
       })
-      .catch(() => setError("The credentials are wrong, please try again"));
+      .catch(() => setMessage("The credentials are wrong, please try again"));
   };
 
   return (
     <>
-      <div>Admin login page</div>
-      <div>
+      <div className="admin-header">Admin login page</div>
+      <div className="admin-input-wrapper">
         <input
           onChange={handleChangeLoginDetails("username")}
           name="username"
@@ -53,7 +63,8 @@ const AdminLogin = () => {
           type="password"
         />
         <input type="submit" value="submit" onClick={handleSubmitLoginForm} />
-        {error !== null ? <div>{error}</div> : ""}
+        {message !== null ? <div>{message}</div> : ""}
+        {success && <Link to="/admin/dashboard">Success</Link>}
       </div>
     </>
   );

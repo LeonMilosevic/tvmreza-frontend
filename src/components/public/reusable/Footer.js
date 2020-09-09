@@ -26,15 +26,15 @@ const Footer = () => {
             <h5>Kontakt:</h5>
             <div className="valign-wrapper">
               <i className="material-icons tiny">home</i>
-              &nbsp; Adresa
+              &nbsp; 38218 Leposavic
             </div>
             <div className="valign-wrapper">
               <i className="material-icons tiny">phone</i>
-              &nbsp; Broj
+              &nbsp; +381(0)2883165
             </div>
             <div className="valign-wrapper">
               <i className="material-icons tiny">email</i>
-              &nbsp; email@email.com
+              &nbsp; office@tvmreza.tv
             </div>
           </div>
         </div>
@@ -45,17 +45,29 @@ const Footer = () => {
             <div>© 2020 Copyright TV Mreza</div>
             <div className="footer-social">
               <div>
-                <a target="_blank" href="/">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.facebook.com/NezavisnaTvMreza/"
+                >
                   <FaFacebookF className="nav-icon-color-f" />
                 </a>
               </div>
               <div>
-                <a target="_blank" href="/">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://twitter.com/NezavisnaTVMrea"
+                >
                   <FaTwitter className="nav-icon-color-f" />
                 </a>
               </div>
               <div>
-                <a target="_blank" href="/">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.youtube.com/channel/UCBhi5RNBF78DhCxebCc5NIg"
+                >
                   <FaYoutube className="nav-icon-color-f" />
                 </a>
               </div>
