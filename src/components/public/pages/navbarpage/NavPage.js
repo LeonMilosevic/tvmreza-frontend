@@ -33,8 +33,12 @@ const NavPage = () => {
         </div>
         <div className="row">
           <div className="col s9 m9">
-            <div className="navpage-image">
-              <img src={navpageContent.imagesUrl} alt="logo" />
+            <div className="navpage-image-wrapper">
+              <img
+                className="navpage-image"
+                src={navpageContent.imagesUrl}
+                alt="logo"
+              />
             </div>
             <div>{navpageContent.content && parse(navpageContent.content)}</div>
           </div>

@@ -36,6 +36,9 @@
   column-gap: 2%;
   row-gap: 3%;
   margin-bottom: 300px;
+  @media (max-width: $screen-max-phone) {
+    display: inherit;
+  }
 }
 
 .grid-lica-item {
@@ -47,6 +50,10 @@
   object-fit: cover;
   width: 100%;
   height: 250px;
+  @media (max-width: $screen-max-phone) {
+    width: 50%;
+    height: 100px;
+  }
 }
 
 .lica-text {
@@ -54,6 +61,13 @@
   color: $white;
   font-weight: 700;
   padding: 10px 20px;
+  @media (max-width: $screen-max-phone) {
+    margin: 0 auto;
+    width: 50%;
+    padding: 2px 5px;
+    font-size: 10px;
+    transform: translateY(-32%);
+  }
 }
 
 .licasingle-wrapper {
@@ -74,7 +88,12 @@
   margin: 5% 0;
 }
 
-.navpage-image {
+.navpage-image-wrapper {
   text-align: center;
   margin: 5% 0;
+  width: 100%;
+}
+
+.navpage-image {
+  width: 50%;
 }
