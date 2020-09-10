@@ -15,8 +15,8 @@ import { Link } from "react-router-dom";
 
 const AdminLogin = () => {
   const [loginDetails, setLoginDetails] = React.useState({
-    username: "Administrator",
-    password: "XeGyZp2UyCsOw4z5suKJh7TiFl2Bc2zr",
+    username: "",
+    password: "",
   });
   const [message, setMessage] = React.useState(null);
   const [success, setSuccess] = React.useState(false);
